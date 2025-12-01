@@ -1,24 +1,73 @@
-# Open Source Programming Club (OSPC) - VIT Chennai
+# Girijesh's Portfolio
 
-Welcome to the Open Source Programming Club (OSPC) at VIT Chennai! We are a student-driven initiative dedicated to promoting awareness and adoption of Free and Open Source Software (FOSS). Our mission is to empower students with practical skills in collaborative software development, focusing on Git and GitHub expertise.
+Welcome to my personal portfolio website! This is a showcase of my projects, skills, and experiences as a developer.
 
-**Website**: [https://ospcvitc.club](https://ospcvitc.club)
+**Live Website**: [https://girijeshhs.github.io/portfolio](https://girijeshhs.github.io/portfolio)
 
-## About Us
+## About This Portfolio
 
-At OSPC, we believe in the power of open-source to bring about positive change and innovation. Whether you're an experienced developer or just getting started, we provide a platform for you to learn, contribute, and grow. Our activities include workshops, seminars, and community-driven projects that enhance your understanding and application of open-source principles.
+This portfolio is built with modern web technologies and features:
+- Responsive design with Tailwind CSS
+- Interactive components with React and Next.js
+- Dynamic content management
+- Clean and professional UI
 
-## Contact Us
+## Technologies Used
 
-- **Location**: [VIT Chennai Campus, Tamil Nadu, India](https://maps.app.goo.gl)
-- **Email**: opensourceprogrammingclub.vitc@gmail.com
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Deployment**: GitHub Pages
 
-## Follow Us
+## Getting Started
 
-- **Instagram**: [OSPC on Instagram](https://www.instagram.com)
-- **LinkedIn**: [OSPC on LinkedIn](https://www.linkedin.com)
-- **GitHub**: [OSPC on GitHub](https://github.com)
+### Prerequisites
 
-Join us in building a world where knowledge is freely shared, and everyone has the opportunity to contribute!
+- Node.js (version 18 or higher)
+- npm or yarn
 
-*© 2025 Open Source Programming Club (OSPC) - VIT Chennai. All Rights Reserved.*
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/girijeshhs/portfolio.git
+   cd portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+- `app/` - Next.js app router pages
+- `components/` - Reusable React components
+- `lib/` - Utility functions
+- `public/` - Static assets
+- `constants/` - Application constants
+
+## Contact
+
+Feel free to reach out if you'd like to collaborate or just say hello!
+
+- **Email**: [your-email@example.com]
+- **LinkedIn**: [Your LinkedIn Profile]
+- **GitHub**: [https://github.com/girijeshhs](https://github.com/girijeshhs)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+*© 2025 Girijesh. All Rights Reserved.*
