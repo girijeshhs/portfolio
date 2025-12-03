@@ -190,17 +190,18 @@ export default function Home() {
     }
   }, []);
 
-  // Prevent hydration mismatch
+  // Show loading state while mounting to prevent hydration mismatch
   if (!mounted) {
-    return null;
+    return (
+      <main className="relative overflow-hidden bg-gradient-to-b from-dark-800 to-purple-400 min-h-screen" />
+    );
   }
 
   return (
     <main className="relative overflow-hidden bg-gradient-to-b from-dark-800 to-purple-400">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showAnimation && <EntryAnimation onComplete={() => setShowAnimation(false)} />}
       </AnimatePresence>
-      <Spotlight />
       <Hero />
       <Terminal />
       <AboutSection />
