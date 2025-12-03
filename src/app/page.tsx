@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Terminal from "./Terminal";
 import { FaCalendarAlt, FaLocationArrow, FaWpexplorer } from "react-icons/fa";
@@ -41,6 +42,18 @@ const Hero = () => (
     initial="hidden"
     animate="visible"
   >
+    {/* Background Image */}
+    <div className="absolute inset-0 z-0">
+      <Image
+        src="/main-bg.webp"
+        alt="Hero background"
+        fill
+        className="object-cover opacity-20"
+        priority
+        quality={85}
+      />
+    </div>
+    
     <SpotlightGrid />
     <div className="flex justify-center relative my-20 z-10">
       <ParticlesComponent />

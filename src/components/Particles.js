@@ -1,6 +1,6 @@
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
@@ -9,6 +9,18 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 
 
 const ParticlesComponent = (props) => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -83,10 +95,10 @@ const ParticlesComponent = (props) => {
           density: {
             enable: true,
           },
-          value: 150,
+          value: 50, // Reduced from 150 to 50
         },
         opacity: {
-          value: 1.0,
+          value: 0.15, // Reduced from 1.0 to 0.15
         },
         shape: {
           type: "circle",
@@ -100,6 +112,10 @@ const ParticlesComponent = (props) => {
     [],
   );
 
+  // Don't render particles if user prefers reduced motion
+  if (prefersReducedMotion) {
+    return null;
+  }
 
   return <Particles id={props.id} init={particlesLoaded} options={options} />; 
 };
