@@ -1,6 +1,7 @@
 import React from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Link from "next/link";
+import { personalInfo, social_links } from "@/data/portfolio";
+
 const Footer = () => {
   return (
     <div className="relative">
@@ -14,17 +15,19 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4 text-[#a655f8]">Quick Links</h3>
           <ul className="space-y-2">
             {[
-              { name: "Experience", href: "/leads" },
-              { name: "Projects", href: "/leaderboard" },
-              { name: "Resume", href: "/assets/resume/Girijesh_Resume.pdf" },
+              { name: "About", href: "#about" },
+              { name: "Skills", href: "#skills" },
+              { name: "Projects", href: "#projects" },
+              { name: "Contact", href: "#contact" },
+              { name: "Resume", href: personalInfo.resume_url },
             ].map((link) => (
               <li key={link.name}>
-                <Link
+                <a
                   href={link.href}
                   className="hover:text-yellow-500 transition-colors"
                 >
                   {link.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -36,12 +39,12 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
             <li> 
               <strong>Location:</strong> <br /> 
-              <span className="hover:text-yellow-500 transition-colors"> Tamil Nadu, India </span>
+              <span className="hover:text-yellow-500 transition-colors"> {personalInfo.location} </span>
               </li>
               <li>
                 <strong>Email:</strong> <br />
-                <a href="mailto:girijesh.email@example.com" className="hover:underline hover:text-yellow-500">
-                girijesh.email@example.com
+                <a href={social_links.email} className="hover:underline hover:text-yellow-500">
+                {personalInfo.email}
                 </a>
               </li>
               <li>
@@ -54,9 +57,9 @@ const Footer = () => {
   <h3 className="text-lg font-semibold mb-4 text-[#a655f8]">Connect With Me</h3>
   <ul className="space-y-2">
     {[
-      { icon: "linkedin-in", label: "LinkedIn", url: "https://linkedin.com/in/girijesh" },
-      { icon: "github", label: "Github", url: "https://github.com/girijesh" },
-      { icon: "envelope", label: "Email", url: "mailto:girijesh.email@example.com" }
+      { icon: "linkedin-in", label: "LinkedIn", url: social_links.linkedin },
+      { icon: "github", label: "Github", url: social_links.github },
+      { icon: "envelope", label: "Email", url: social_links.email }
     ].map(({ icon, label, url }) => (
       <li key={label}>
         <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-yellow-500 transition-colors">
@@ -71,7 +74,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700/50 mt-10 pt-4">
           <p className="text-center text-sm text-[#a655f8]">
-            © {new Date().getFullYear()} Girijesh S. All Rights Reserved.
+            © {new Date().getFullYear()} {personalInfo.name}. All Rights Reserved.
           </p>
         </div>
       </div>

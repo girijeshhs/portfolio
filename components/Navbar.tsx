@@ -12,12 +12,11 @@ const Navbar = () => {
 
   // Navigation links
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Experience", href: "/leads" },
-    { name: "Projects", href: "/leaderboard" },
-    { name: "Blog", href: "/events" },
-    { name: "Contact", href: "/gallery" },
+    { name: "Home", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
   // Control navbar visibility based on scroll
@@ -79,13 +78,13 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <nav className="hidden md:flex flex-row gap-6">
         {navLinks.map((link) => (
-          <Link
+          <a
             key={link.name}
             href={link.href}
             className="text-white text-sm hover:text-purple-500 transition-colors duration-300"
           >
             {link.name}
-          </Link>
+          </a>
         ))}
       </nav>
 
@@ -118,14 +117,14 @@ const Navbar = () => {
         >
           <div className="flex flex-col gap-4 items-center">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
                 href={link.href}
                 className="text-white text-lg hover:text-purple-500 transition-colors duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
         </motion.div>
