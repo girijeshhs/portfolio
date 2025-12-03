@@ -11,33 +11,32 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import MagicButton from "@/components/MagicButton";
 
-// Animation variants
+// Animation variants with optimized durations
 const animations = {
   fadeInUp: {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1 },
-    transition: { duration: 0.8 }
+    transition: { duration: 0.5 } // Faster animations
   },
   fadeIn: {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.3 } // Faster animations
   }
 };
 
 // Components
 const SpotlightGrid = () => (
   <>
-    <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen" fill="white" />
-    <Spotlight className="h-[80vh] w-[50vw] top-10 left-full" fill="purple" />
-    <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
+    <Spotlight className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen opacity-10" fill="white" />
+    <Spotlight className="h-[80vh] w-[50vw] top-10 left-full opacity-10" fill="purple" />
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
   </>
 );
 
 const Hero = () => (
   <motion.div 
-    className="pb-20 pt-10 relative"
+    className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
     variants={animations.fadeIn}
     initial="hidden"
     animate="visible"
@@ -48,16 +47,16 @@ const Hero = () => (
         src="/main-bg.webp"
         alt="Hero background"
         fill
-        className="object-cover opacity-20"
+        className="object-cover opacity-5"
         priority
         quality={85}
       />
     </div>
     
     <SpotlightGrid />
-    <div className="flex justify-center relative my-20 z-10">
+    <div className="flex justify-center relative z-10 w-full">
       <ParticlesComponent />
-      <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+      <div className="max-w-4xl mx-auto px-4 flex flex-col items-center justify-center text-center">
         <motion.div
           className="space-y-6 text-center"
           variants={animations.fadeInUp}
@@ -89,28 +88,63 @@ const AboutSection = () => (
     variants={animations.fadeInUp}
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true }}
-    className="relative text-white py-16 backdrop-blur-sm"
+    viewport={{ once: true, margin: "-100px" }}
+    className="relative py-24 px-4"
   >
-    <div className="max-w-3xl mx-auto px-6 space-y-8">
-      <h2 className="text-4xl text-white font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-        About Me
-      </h2>
-      <div className="space-y-4">
-        <p className="text-lg leading-relaxed">
-          I&apos;m Girijesh — a logical, detail-driven software engineer from Tamil Nadu. I enjoy building full-stack web apps, experimenting with blockchain, and applying ML to real problems.
-        </p>
-        <p className="text-lg leading-relaxed">
-        My work focuses on practical, well-tested systems and product-minded code. I favour clarity over cleverness, and I build things that are useful and maintainable. More strategic than emotional — I think like an engineer and act like a builder.
-        </p>
+    {/* Background image with proper optimization */}
+    <div className="absolute inset-0 z-0">
+      <Image
+        src="/about_computer.webp"
+        alt=""
+        fill
+        className="object-cover opacity-5"
+        quality={85}
+      />
+    </div>
+
+    <div className="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12">
+      {/* Left: Text */}
+      <div className="space-y-6">
+        <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+          About Me
+        </h2>
+        <div className="space-y-4">
+          <p className="text-lg leading-relaxed text-slate-300 max-w-prose">
+            I&apos;m Girijesh — a logical, detail-driven software engineer from Tamil Nadu. I enjoy building full-stack web apps, experimenting with blockchain, and applying ML to real problems.
+          </p>
+          <p className="text-lg leading-relaxed text-slate-300 max-w-prose">
+            My work focuses on practical, well-tested systems and product-minded code. I favour clarity over cleverness, and I build things that are useful and maintainable. More strategic than emotional — I think like an engineer and act like a builder.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4 pt-4">
+          <Link href="/about">
+            <MagicButton title="Learn More" icon={<FaWpexplorer />} position="right" />
+          </Link>
+          <Link href="/leads">
+            <MagicButton title="View Projects" icon={<FaCalendarAlt />} position="right" />
+          </Link>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-4">
-        <Link href="/about">
-          <MagicButton title="Learn More" icon={<FaWpexplorer />} position="right" />
-        </Link>
-        <Link href="/leads">
-          <MagicButton title="View Projects" icon={<FaCalendarAlt />} position="right" />
-        </Link>
+
+      {/* Right: Stats or visual element */}
+      <div className="flex flex-col justify-center gap-4">
+        <div className="p-6 bg-slate-900/50 border border-slate-800 rounded-xl backdrop-blur-sm">
+          <h3 className="text-xl font-semibold mb-4 text-white">Quick Facts</h3>
+          <div className="space-y-3 text-slate-300">
+            <div className="flex items-center gap-2">
+              <span className="text-violet-400">▸</span>
+              <span>Full-Stack Developer</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-violet-400">▸</span>
+              <span>Web • Blockchain • ML</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-violet-400">▸</span>
+              <span>Tamil Nadu, India</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </motion.section>
@@ -121,7 +155,8 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => (
     className="fixed inset-0 flex items-center justify-center bg-black z-50"  
     initial={{ opacity: 1 }}
     animate={{ opacity: 0 }}
-    transition={{ duration: 5 }} // Animation duration is set to 5 seconds
+    exit={{ opacity: 0 }}
+    transition={{ duration: 2.5 }} // Reduced to 2.5 seconds per PRD
     onAnimationComplete={onComplete}
   >
     <div className="text-center">
@@ -139,17 +174,26 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => (
 );
 
 export default function Home() {
-  const [showAnimation, setShowAnimation] = useState(true);
+  const [showAnimation, setShowAnimation] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     const hasVisited = localStorage.getItem("hasVisited");
     if (!hasVisited) {
       setShowAnimation(true);
       localStorage.setItem("hasVisited", "true");
-    } else {
-      setShowAnimation(false);
+      
+      // Auto-hide after 3 seconds
+      setTimeout(() => setShowAnimation(false), 3000);
     }
   }, []);
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <main className="relative overflow-hidden bg-gradient-to-b from-dark-800 to-purple-400">
