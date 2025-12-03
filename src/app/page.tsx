@@ -6,10 +6,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Terminal from "./Terminal";
 import { FaCalendarAlt, FaLocationArrow, FaWpexplorer } from "react-icons/fa";
-import ParticlesComponent from "@/components/Particles";
-import { Spotlight } from "@/components/ui/spotlight";
-import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import MagicButton from "@/components/MagicButton";
+import ParticlesComponent from "@/src/components/Particles";
+import { Spotlight } from "@/src/ui/spotlight";
+import { TextGenerateEffect } from "@/src/ui/TextGenerateEffect";
+import MagicButton from "@/src/components/MagicButton";
 
 // Animation variants with optimized durations
 const animations = {
