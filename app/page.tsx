@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Terminal from "./Terminal";
-import { FaLocationArrow } from "react-icons/fa";
+import { FaLocationArrow, FaArrowDown } from "react-icons/fa";
 import ParticlesComponent from "@/components/Particles";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
@@ -13,19 +13,46 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import { personalInfo } from "@/data/portfolio";
 
-// Animation variants
+// Enhanced Animation variants
 const animations = {
   fadeInUp: {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-    transition: { duration: 0.8 }
+    hidden: { y: 40, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
   },
   fadeIn: {
     hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    transition: { duration: 0.5 }
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  },
+  staggerContainer: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+  },
+  scaleIn: {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1,
+      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
   }
 };
+
+// Section Divider Component
+const SectionDivider = () => (
+  <div className="w-full py-8 flex justify-center">
+    <div className="section-divider-glow w-1/3 max-w-md" />
+  </div>
+);
 
 // Components
 const SpotlightGrid = () => (
@@ -39,61 +66,116 @@ const SpotlightGrid = () => (
 
 const Hero = () => (
   <motion.div 
-    className="pb-20 pt-10 relative min-h-screen flex items-center"
+    className="pb-32 pt-20 relative min-h-screen flex items-center"
     variants={animations.fadeIn}
     initial="hidden"
     animate="visible"
   >
     <SpotlightGrid />
+    
+    {/* Subtle gradient glow behind hero content */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+    
     <div className="flex justify-center relative z-10 w-full">
       <ParticlesComponent />
       <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
         <motion.div
-          className="space-y-6 text-center"
-          variants={animations.fadeInUp}
+          className="space-y-8 text-center"
+          variants={animations.staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
-          <p className="uppercase tracking-widest text-lg text-white-200">{personalInfo.name}</p>
-          <TextGenerateEffect
-            words={`${personalInfo.title} — ${personalInfo.tagline}`}
-            className="text-white-100 text-[40px] md:text-5xl lg:text-6xl"
-          />
-          <p className="text-white-200 md:tracking-wider text-sm md:text-lg lg:text-2xl">
+          {/* Name badge with glow */}
+          <motion.div variants={animations.fadeInUp}>
+            <span className="inline-block px-6 py-2 rounded-full glass-light text-sm uppercase tracking-[0.3em] text-purple-300 border border-purple-500/20">
+              {personalInfo.name}
+            </span>
+          </motion.div>
+          
+          {/* Main headline with enhanced styling */}
+          <motion.div variants={animations.fadeInUp} className="relative">
+            <TextGenerateEffect
+              words={`${personalInfo.title} — ${personalInfo.tagline}`}
+              className="text-white-100 text-[36px] md:text-5xl lg:text-6xl font-bold leading-tight text-glow-subtle"
+            />
+            {/* Animated underline accent */}
+            <motion.div 
+              className="mx-auto mt-6 h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full"
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "40%", opacity: 1 }}
+              transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
+            />
+          </motion.div>
+          
+          {/* Bio with better readability */}
+          <motion.p 
+            variants={animations.fadeInUp}
+            className="text-white-200 md:tracking-wide text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed"
+          >
             {personalInfo.bio}
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          </motion.p>
+          
+          {/* Premium CTA buttons */}
+          <motion.div 
+            variants={animations.fadeInUp}
+            className="flex gap-6 justify-center flex-wrap pt-4"
+          >
             <a href="#projects">
               <MagicButton title="View Projects" icon={<FaLocationArrow />} position="right" />
             </a>
             <a href="#contact">
               <MagicButton title="Get In Touch" icon={<FaLocationArrow />} position="right" />
             </a>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
+    
+    {/* Scroll indicator */}
+    <motion.div 
+      className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      animate={{ y: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <a href="#terminal-skills" className="flex flex-col items-center gap-2 text-white-200/50 hover:text-purple-400 transition-colors">
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <FaArrowDown className="text-sm" />
+      </a>
+    </motion.div>
   </motion.div>
 );
 
-const AboutSection = () => (
+// Combined Terminal + Skills Section (Side by Side)
+const TerminalSkillsSection = () => (
   <motion.section
-    id="about"
-    variants={animations.fadeInUp}
+    id="terminal-skills"
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true }}
-    className="relative text-white py-16 backdrop-blur-sm"
+    viewport={{ once: true, margin: "-100px" }}
+    className="relative py-24"
   >
-    <div className="max-w-3xl mx-auto px-6 space-y-8">
-      <h2 className="text-4xl text-white font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent text-center">
-        About Me
-      </h2>
-      <div className="space-y-4 text-center">
-        <p className="text-lg leading-relaxed text-white-200">
-          {personalInfo.bio}
-        </p>
-        <p className="text-lg leading-relaxed text-white-200">
-          {personalInfo.extended_bio}
-        </p>
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="grid lg:grid-cols-2 gap-8 items-start">
+        {/* Terminal on the Left */}
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="lg:sticky lg:top-24"
+        >
+          <Terminal />
+        </motion.div>
+        
+        {/* Skills on the Right */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+        >
+          <SkillsSection />
+        </motion.div>
       </div>
     </div>
   </motion.section>
@@ -104,19 +186,34 @@ const EntryAnimation = ({ onComplete }: { onComplete: () => void }) => (
     className="fixed inset-0 flex items-center justify-center bg-black z-50"  
     initial={{ opacity: 1 }}
     animate={{ opacity: 0 }}
-    transition={{ duration: 2 }}
+    transition={{ duration: 2, ease: "easeInOut" }}
     onAnimationComplete={onComplete}
   >
-    <div className="text-center">
-      <h1 className="text-4xl md:text-6xl text-white-200 font-bold mb-4">
+    <div className="text-center space-y-4">
+      <motion.h1 
+        className="text-4xl md:text-6xl text-white-200 font-bold gradient-text-glow"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
         {personalInfo.name}
-      </h1>
-      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-2">
+      </motion.h1>
+      <motion.p 
+        className="text-lg sm:text-xl md:text-2xl text-gray-300"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         {personalInfo.title}
-      </p>
-      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300">
+      </motion.p>
+      <motion.p 
+        className="text-base sm:text-lg md:text-xl text-purple-400"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
         {personalInfo.tagline}
-      </p>
+      </motion.p>
     </div>
   </motion.div>
 );
@@ -138,18 +235,23 @@ export default function Home() {
 
   if (!mounted) {
     return (
-      <main className="relative overflow-hidden bg-gradient-to-b from-black via-black-100 to-black min-h-screen" />
+      <main className="relative overflow-hidden bg-black min-h-screen" />
     );
   }
 
   return (
-    <main className="relative overflow-hidden bg-gradient-to-b from-black via-black-100 to-black">
+    <main className="relative overflow-hidden bg-black">
       {showAnimation && <EntryAnimation onComplete={() => setShowAnimation(false)} />}
+      
       <Hero />
-      <AboutSection />
-      <Terminal />
-      <SkillsSection />
+      <SectionDivider />
+      
+      <TerminalSkillsSection />
+      <SectionDivider />
+      
       <ProjectsSection />
+      <SectionDivider />
+      
       <ContactSection />
     </main>
   );

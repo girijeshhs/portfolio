@@ -1,85 +1,117 @@
+"use client";
+
 import React from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
 import { personalInfo, social_links } from "@/data/portfolio";
 
 const Footer = () => {
+  const quickLinks = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const socialLinks = [
+    { icon: FaLinkedin, label: "LinkedIn", url: social_links.linkedin },
+    { icon: FaGithub, label: "GitHub", url: social_links.github },
+    { icon: FaEnvelope, label: "Email", url: social_links.email },
+  ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="relative">
-      {/* Black overlay */}
-      <div className="absolute inset-0 bg-black z-10"/>
-    <footer className="relative bg-gradient-to-b from-black/90 to-black text-white py-5">
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"/>
-      <div className="relative z-10">
-        <section className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
-        <div>
-          <h3 className="text-lg font-semibold mb-4 text-[#a655f8]">Quick Links</h3>
-          <ul className="space-y-2">
-            {[
-              { name: "About", href: "#about" },
-              { name: "Skills", href: "#skills" },
-              { name: "Projects", href: "#projects" },
-              { name: "Contact", href: "#contact" },
-              { name: "Resume", href: personalInfo.resume_url },
-            ].map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="hover:text-yellow-500 transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <footer className="relative bg-black text-white pt-16 pb-8 overflow-hidden">
+      {/* Gradient line at top */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+      
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
 
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white-100">
+              {personalInfo.name}<span className="text-purple-400">.</span>
+            </h3>
+            <p className="text-white-200/60 text-sm leading-relaxed max-w-xs">
+              {personalInfo.title} crafting digital experiences with code and creativity.
+            </p>
+          </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#a655f8]">Contact Me</h3>
-            <ul className="space-y-2 text-sm">
-            <li> 
-              <strong>Location:</strong> <br /> 
-              <span className="hover:text-yellow-500 transition-colors"> {personalInfo.location} </span>
-              </li>
-              <li>
-                <strong>Email:</strong> <br />
-                <a href={social_links.email} className="hover:underline hover:text-yellow-500">
-                {personalInfo.email}
-                </a>
-              </li>
-              <li>
-                
-              </li>
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-white-200/60 hover:text-purple-400 transition-colors duration-300 text-sm"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-  <h3 className="text-lg font-semibold mb-4 text-[#a655f8]">Connect With Me</h3>
-  <ul className="space-y-2">
-    {[
-      { icon: "linkedin-in", label: "LinkedIn", url: social_links.linkedin },
-      { icon: "github", label: "Github", url: social_links.github },
-      { icon: "envelope", label: "Email", url: social_links.email }
-    ].map(({ icon, label, url }) => (
-      <li key={label}>
-        <a href={url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-yellow-500 transition-colors">
-          <i className={`fab fa-${icon} text-[#a655f8]`}></i> {label}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+          {/* Contact & Social */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">
+              Connect
+            </h4>
+            <div className="flex gap-4">
+              {socialLinks.map(({ icon: Icon, label, url }) => (
+                <motion.a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white-200/60 hover:text-purple-400 hover:border-purple-500/50 transition-all duration-300"
+                  aria-label={label}
+                >
+                  <Icon className="text-lg" />
+                </motion.a>
+              ))}
+            </div>
+            <div className="space-y-2 text-sm text-white-200/60">
+              <p>{personalInfo.email}</p>
+              <p>{personalInfo.location}</p>
+            </div>
+          </div>
+        </div>
 
-        </section>
+        {/* Divider */}
+        <div className="section-divider mb-8" />
 
-        <div className="border-t border-gray-700/50 mt-10 pt-4">
-          <p className="text-center text-sm text-[#a655f8]">
-            © {new Date().getFullYear()} {personalInfo.name}. All Rights Reserved.
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white-200/40">
+            © {new Date().getFullYear()} {personalInfo.name}. Built with Next.js & ❤️
           </p>
+          
+          {/* Back to top button */}
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 text-sm text-white-200/40 hover:text-purple-400 transition-colors duration-300"
+          >
+            <span>Back to top</span>
+            <FaArrowUp className="text-xs" />
+          </motion.button>
         </div>
       </div>
     </footer>
-    </div>
   );
 };
 

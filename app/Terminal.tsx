@@ -93,7 +93,7 @@ const Terminal: React.FC = () => {
       variants={fadeInUp}
       initial="hidden"
       animate="visible"
-      className="mx-auto my-16 max-w-4xl px-4"
+      className="w-full"
     >
       <div className="rounded-lg overflow-hidden border border-gray-700 shadow-2xl bg-[#1E1E1E]">
         {/* Terminal Header */}
