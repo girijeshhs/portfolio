@@ -152,27 +152,43 @@ const TerminalSkillsSection = () => (
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-100px" }}
-    className="relative py-24"
+    className="relative py-16"
   >
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="grid lg:grid-cols-2 gap-8 items-start">
-        {/* Terminal on the Left */}
+    <div className="max-w-6xl mx-auto px-6">
+      {/* Section Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Explore My <span className="text-purple-400">Skills</span>
+        </h2>
+        <p className="text-gray-400 max-w-xl mx-auto">
+          An interactive terminal to discover my technical expertise. Type commands to explore.
+        </p>
+      </motion.div>
+
+      <div className="grid lg:grid-cols-5 gap-6 items-start">
+        {/* Terminal on the Left - Takes more space */}
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="lg:sticky lg:top-24"
+          className="lg:col-span-3"
         >
           <Terminal />
         </motion.div>
         
-        {/* Skills on the Right */}
+        {/* Command Guide on the Right */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+          className="lg:col-span-2"
         >
           <SkillsSection />
         </motion.div>
