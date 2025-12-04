@@ -31,93 +31,72 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-32 relative">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
-      
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="contact" className="py-16 relative">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16"
+          className="space-y-8"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-6">
-            <div className="flex justify-center">
-              <div className="accent-bar" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text-glow">
-              Let's Connect
+          <motion.div variants={itemVariants} className="text-center space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
+              Let's <span className="text-purple-400">Connect</span>
             </h2>
-            <p className="text-white-200 text-lg max-w-2xl mx-auto leading-relaxed">
-              Open to collaborations, interesting projects, and engineering discussions
+            <p className="text-gray-400 text-sm">
+              Open to collaborations and interesting projects
             </p>
           </motion.div>
 
-          {/* Content Card */}
+          {/* Content */}
           <motion.div 
             variants={itemVariants}
-            className="glass-card rounded-2xl p-8 md:p-12 space-y-10"
+            className="bg-[#0a0a0a] border border-gray-800 rounded-lg p-6 space-y-6"
           >
             {/* Social Links */}
-            <div className="flex justify-center gap-8 flex-wrap">
+            <div className="flex justify-center gap-6">
               {socials.map((social, index) => {
                 const Icon = social.icon;
                 return (
-                  <motion.a
+                  <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.1, 
-                      y: -4,
-                    }}
-                    className="flex flex-col items-center gap-3 group"
+                    className="flex flex-col items-center gap-2 group"
                   >
-                    <div className="relative w-16 h-16 rounded-full glass-light border border-purple-500/20 flex items-center justify-center group-hover:border-purple-400/50 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]">
-                      <Icon className="text-2xl text-white-200/70 group-hover:text-purple-400 transition-colors duration-300" />
+                    <div className="w-12 h-12 rounded-full bg-white/5 border border-gray-800 flex items-center justify-center group-hover:border-purple-500/50 transition-all">
+                      <Icon className="text-xl text-gray-400 group-hover:text-purple-400 transition-colors" />
                     </div>
-                    <span className="text-sm text-white-200/70 group-hover:text-purple-400 transition-colors duration-300 font-medium">
+                    <span className="text-xs text-gray-500 group-hover:text-purple-400 transition-colors">
                       {social.name}
                     </span>
-                  </motion.a>
+                  </a>
                 );
               })}
             </div>
 
-            <div className="section-divider w-1/3 mx-auto" />
+            <div className="w-16 h-px bg-gray-800 mx-auto" />
 
-            {/* Resume Download */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex justify-center"
-            >
+            {/* Resume */}
+            <div className="flex justify-center">
               <a href={personalInfo.resume_url} download>
                 <MagicButton title="Download Resume" icon={<FaFileDownload />} position="right" />
               </a>
-            </motion.div>
+            </div>
 
-            {/* Contact Info */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-center"
-            >
-              <div className="flex items-center justify-center gap-2 text-white-200/70 hover:text-purple-400 transition-colors">
-                <FaEnvelope className="text-purple-400" />
-                <span>{personalInfo.email}</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-white-200/70">
-                <span className="text-purple-400">📍</span>
-                <span>{personalInfo.location}</span>
-              </div>
-            </motion.div>
+            {/* Info */}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 text-center text-xs">
+              <span className="text-gray-400">
+                <FaEnvelope className="inline mr-1 text-purple-400" />
+                {personalInfo.email}
+              </span>
+              <span className="text-gray-400">
+                📍 {personalInfo.location}
+              </span>
+            </div>
           </motion.div>
         </motion.div>
       </div>

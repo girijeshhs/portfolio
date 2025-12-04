@@ -2,11 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { skills } from "@/data/portfolio";
 
-const fadeInUp = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
-};
-
 // Skill commands mapping
 const skillCommands: Record<string, { title: string; items: string[] }> = {
   frontend: { title: "Frontend", items: skills.frontend },
@@ -95,80 +90,60 @@ Categories: frontend, backend, databases, blockchain, ml, tools`
   };
 
   return (
-    <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      animate="visible"
-      className="w-full"
-    >
-      <div className="rounded-xl overflow-hidden border border-gray-700/50 shadow-2xl bg-[#0d1117]">
+    <div className="w-full">
+      <div className="rounded-lg overflow-hidden border border-gray-800 bg-[#0a0a0a]">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-gray-700/50">
-          <div className="flex items-center gap-3">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-              <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
-            </div>
-            <span className="text-gray-400 text-xs font-mono">skills-terminal</span>
-          </div>
+        <div className="flex items-center justify-between px-3 py-2 bg-[#1a1a1a] border-b border-gray-800">
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500 font-mono">zsh</span>
+            <div className="flex space-x-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+            </div>
+            <span className="text-gray-500 text-xs font-mono">girijesh@dev ~ skills</span>
           </div>
         </div>
 
         {/* Terminal Content */}
-        <div className="p-4 font-mono text-sm h-[350px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700">
-          <div className="space-y-3">
+        <div className="p-3 font-mono text-xs h-[280px] overflow-y-auto">
+          <div className="space-y-1">
             {output.map((line, index) => (
               <div key={index}>
                 {line.type === 'command' ? (
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#27C93F]">❯</span>
-                    <span className="text-purple-400">~</span>
-                    <span className="text-white">{line.content}</span>
+                  <div className="text-gray-300">
+                    <span className="text-green-500">➜</span> <span className="text-cyan-400">~</span> {line.content}
                   </div>
                 ) : line.type === 'skills' ? (
-                  <div className="pl-4 py-2">
-                    <div className="text-purple-400 font-semibold mb-2">◆ {line.content}</div>
-                    <div className="flex flex-wrap gap-2">
-                      {line.skills?.map((skill, i) => (
-                        <span 
-                          key={i} 
-                          className="px-2 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-purple-300 text-xs"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="text-gray-300 pl-3">
+                    <span className="text-yellow-500">{line.content}:</span> {line.skills?.join(" • ")}
                   </div>
                 ) : line.type === 'error' ? (
-                  <div className="text-red-400 pl-4 text-xs">{line.content}</div>
+                  <div className="text-red-400 pl-3">{line.content}</div>
                 ) : (
-                  <div className="text-gray-400 pl-4 whitespace-pre-wrap text-xs">{line.content}</div>
+                  <div className="text-gray-400 pl-3 whitespace-pre-wrap">{line.content}</div>
                 )}
               </div>
             ))}
           </div>
 
           {/* Input Line */}
-          <div className="flex items-center gap-2 mt-4">
-            <span className="text-[#27C93F]">❯</span>
-            <span className="text-purple-400">~</span>
+          <div className="flex items-center gap-1 mt-2">
+            <span className="text-green-500">➜</span>
+            <span className="text-cyan-400">~</span>
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={handleKeyPress}
-              className="flex-1 bg-transparent text-white outline-none text-sm"
-              placeholder="type a command..."
+              className="flex-1 bg-transparent text-white outline-none ml-1"
+              placeholder=""
               autoFocus
             />
-            <span className="w-2 h-4 bg-white/70 animate-pulse"></span>
+            <span className="w-1.5 h-3.5 bg-gray-400 animate-pulse"></span>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -25,98 +25,73 @@ const itemVariants = {
 const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => (
   <motion.div
     variants={itemVariants}
-    whileHover={{ 
-      y: -8, 
-      rotateX: 2,
-      rotateY: -2,
-    }}
-    className="group relative glass-card rounded-2xl overflow-hidden hover-lift"
-    style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
+    whileHover={{ y: -4 }}
+    className="group bg-[#0a0a0a] border border-gray-800 rounded-lg overflow-hidden hover:border-purple-500/30 transition-all"
   >
-    {/* Hover glow effect */}
-    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10" />
-    </div>
-    
-    {/* Project Image/Header */}
-    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-b border-purple-500/10">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.span 
-          className="text-7xl font-bold text-white/5 group-hover:text-purple-500/10 transition-colors duration-500"
-          whileHover={{ scale: 1.1 }}
-        >
-          {project.name.charAt(0)}
-        </motion.span>
-      </div>
+    {/* Project Header */}
+    <div className="relative h-32 bg-gradient-to-br from-purple-500/5 to-blue-500/5 border-b border-gray-800 flex items-center justify-center">
+      <span className="text-5xl font-bold text-white/5 group-hover:text-purple-500/10 transition-colors">
+        {project.name.charAt(0)}
+      </span>
       {project.featured && (
-        <div className="absolute top-4 right-4 glass-light px-4 py-1.5 rounded-full border border-purple-500/30">
-          <span className="text-xs font-medium text-purple-300 uppercase tracking-wider">Featured</span>
+        <div className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          Featured
         </div>
       )}
-      
-      {/* Category Badge */}
-      <div className="absolute bottom-4 left-4">
-        <span className="text-xs px-3 py-1 glass-light rounded-full text-white-200 border border-white/10">
+      <div className="absolute bottom-2 left-2">
+        <span className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-400 border border-gray-800">
           {project.category}
         </span>
       </div>
     </div>
 
     {/* Content */}
-    <div className="p-6 space-y-4">
-      <div className="space-y-2">
-        <h3 className="text-2xl font-bold text-white-100 group-hover:text-glow-subtle transition-all duration-300">
-          {project.name}
-        </h3>
-        <p className="text-purple-400 text-sm font-medium">{project.tagline}</p>
+    <div className="p-4 space-y-3">
+      <div>
+        <h3 className="text-lg font-bold text-white">{project.name}</h3>
+        <p className="text-purple-400 text-xs">{project.tagline}</p>
       </div>
 
-      <p className="text-white-200 text-sm leading-relaxed line-clamp-3">
+      <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
         {project.description}
       </p>
 
       {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2">
-        {project.tech_stack.slice(0, 4).map((tech) => (
+      <div className="flex flex-wrap gap-1">
+        {project.tech_stack.slice(0, 3).map((tech) => (
           <span
             key={tech}
-            className="text-xs px-3 py-1.5 glass-light rounded-full text-purple-300 border border-purple-500/20"
+            className="text-[10px] px-2 py-0.5 bg-purple-500/10 rounded text-purple-300 border border-purple-500/20"
           >
             {tech}
           </span>
         ))}
-        {project.tech_stack.length > 4 && (
-          <span className="text-xs px-3 py-1.5 text-purple-400/70">
-            +{project.tech_stack.length - 4} more
-          </span>
+        {project.tech_stack.length > 3 && (
+          <span className="text-[10px] text-gray-500">+{project.tech_stack.length - 3}</span>
         )}
       </div>
 
       {/* Links */}
-      <div className="flex gap-4 pt-2 border-t border-white/5">
+      <div className="flex gap-3 pt-2 border-t border-gray-800">
         {project.github && (
-          <motion.a
+          <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white-200/70 hover:text-purple-400 transition-all duration-300"
-            whileHover={{ x: 3 }}
+            className="flex items-center gap-1 text-gray-400 hover:text-purple-400 transition-colors text-xs"
           >
-            <FaGithub className="text-lg" />
-            <span className="text-sm font-medium">Code</span>
-          </motion.a>
+            <FaGithub /> Code
+          </a>
         )}
         {project.live_url && (
-          <motion.a
+          <a
             href={project.live_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white-200/70 hover:text-purple-400 transition-all duration-300"
-            whileHover={{ x: 3 }}
+            className="flex items-center gap-1 text-gray-400 hover:text-purple-400 transition-colors text-xs"
           >
-            <FaExternalLinkAlt className="text-sm" />
-            <span className="text-sm font-medium">Live Demo</span>
-          </motion.a>
+            <FaExternalLinkAlt className="text-[10px]" /> Demo
+          </a>
         )}
       </div>
     </div>
@@ -130,44 +105,37 @@ export default function ProjectsSection() {
   const filteredProjects = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-32 relative">
-      {/* Background glow */}
-      <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-16 relative">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16"
+          className="space-y-10"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-6">
-            <div className="flex justify-center">
-              <div className="accent-bar" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text-glow">
-              Featured Projects
+          <motion.div variants={itemVariants} className="text-center space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
+              Featured <span className="text-purple-400">Projects</span>
             </h2>
-            <p className="text-white-200 text-lg max-w-2xl mx-auto leading-relaxed">
-              A selection of practical systems and experiments across web, blockchain, and ML
+            <p className="text-gray-400 text-sm max-w-xl mx-auto">
+              Practical systems across web, blockchain, and ML
             </p>
           </motion.div>
 
           {/* Filter Tabs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3">
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <motion.button
                 key={category}
                 onClick={() => setFilter(category)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-6 py-2.5 rounded-full transition-all duration-300 font-medium text-sm ${
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`px-4 py-1.5 rounded-full transition-all duration-300 text-xs ${
                   filter === category
-                    ? "bg-purple-500/20 text-purple-300 border border-purple-500/50 shadow-[0_0_20px_rgba(139,92,246,0.3)]"
-                    : "glass-light text-white-200 border border-white/10 hover:border-purple-500/30"
+                    ? "bg-purple-500/20 text-purple-300 border border-purple-500/50"
+                    : "bg-white/5 text-gray-400 border border-gray-800 hover:border-purple-500/30"
                 }`}
               >
                 {category}
@@ -178,7 +146,7 @@ export default function ProjectsSection() {
           {/* Projects Grid */}
           <motion.div 
             variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {filteredProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
