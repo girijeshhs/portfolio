@@ -87,7 +87,7 @@ const Hero = () => (
         >
           {/* Main headline - Name in purple, then tagline */}
           <motion.div variants={animations.fadeInUp} className="relative space-y-2">
-            <h1 className="text-purple-400 text-[36px] md:text-5xl lg:text-6xl font-bold">
+            <h1 className="text-white text-[36px] md:text-5xl lg:text-6xl font-bold">
               {personalInfo.name}
             </h1>
             <h2 className="text-white text-[28px] md:text-3xl lg:text-4xl font-bold leading-tight">
