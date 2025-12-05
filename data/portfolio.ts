@@ -2,10 +2,10 @@
 
 export const personalInfo = {
   name: "Girijesh S",
-  title: "Software Engineer",
-  tagline: "Web • Blockchain • ML",
+  title: "Girijesh S",
+  tagline: "Your Friendly Neighbourhood Developer you can count on.",
   location: "Tamil Nadu, India",
-  bio: "I'm Girijesh — a logical, detail-driven software engineer from Tamil Nadu. I enjoy building full-stack web apps, experimenting with blockchain, and applying ML to real problems.",
+  bio: " Yeah, I’m the guy you call when something actually needs to get done.I build practical, well-tested systems and write product-minded code that solves real problems.Clarity over clever tricks. Useful over flashy. Always.",
   extended_bio: "My work focuses on practical, well-tested systems and product-minded code. I favour clarity over cleverness, and I build things that are useful and maintainable. More strategic than emotional — I think like an engineer and act like a builder.",
   email: "girijesh@example.com", // Update with your real email
   phone: "+91-XXXXXXXXXX", // Update with your real phone
