@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { projects } from "@/data/portfolio";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { useState } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -99,11 +98,6 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 );
 
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState<string>("All");
-  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
-
-  const filteredProjects = filter === "All" ? projects : projects.filter((p) => p.category === filter);
-
   return (
     <section id="projects" className="py-16 relative">
       <div className="max-w-6xl mx-auto px-6">
@@ -124,31 +118,12 @@ export default function ProjectsSection() {
             </p>
           </motion.div>
 
-          {/* Filter Tabs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setFilter(category)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-4 py-1.5 rounded-full transition-all duration-300 text-xs ${
-                  filter === category
-                    ? "bg-purple-500/20 text-purple-300 border border-purple-500/50"
-                    : "bg-white/5 text-gray-400 border border-gray-800 hover:border-purple-500/30"
-                }`}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
-
           {/* Projects Grid */}
           <motion.div 
             variants={containerVariants}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </motion.div>

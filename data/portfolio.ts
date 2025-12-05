@@ -107,19 +107,6 @@ export const projects = [
     live_url: null,
     featured: false,
   },
-  {
-    id: "vehicle-rental",
-    name: "Vehicle Rental Management",
-    tagline: "Booking & Admin System",
-    description: "Full-stack vehicle rental management system with booking workflows, admin dashboards, and REST APIs.",
-    long_description: "Complete rental management platform with customer booking interface, admin dashboard for fleet management, and comprehensive REST APIs. Features include availability tracking, booking management, and reporting.",
-    tech_stack: ["Node.js", "Express", "React", "MongoDB"],
-    category: "Web Development",
-    image: "/assets/images/placeholder-profile.png",
-    github: "https://github.com/girijeshhs/vehicle-rental",
-    live_url: null,
-    featured: false,
-  },
 ];
 
 export const education = [
