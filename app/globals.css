@@ -32,23 +32,24 @@ html::-webkit-scrollbar {
   }
 }
 
-/* Premium Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Hide native scrollbar visuals but keep scrolling functional */
+/* This removes the purple scrollbar appearance across browsers */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a855f7 0%, #6366f1 100%);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #c084fc 0%, #818cf8 100%);
-}
+/* Fallback: ensure any custom thumb styling is transparent */
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 0; }
 
 #tsparticles {
   position: fixed;
