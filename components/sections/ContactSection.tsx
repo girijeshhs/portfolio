@@ -156,28 +156,36 @@ export default function ContactSection() {
               <h3 className="text-xl font-bold text-white mb-6">Quick Details</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="text-purple-400 mt-1 flex-shrink-0" />
+                  <div className="w-9 h-9 rounded-full bg-purple-600/20 border border-purple-700/40 flex items-center justify-center flex-shrink-0">
+                    <FaMapMarkerAlt className="w-5 h-5 text-white" />
+                  </div>
                   <div>
                     <div className="text-gray-400 text-xs">Location</div>
                     <div className="text-white text-sm">{personalInfo.location}</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaClock className="text-purple-400 mt-1 flex-shrink-0" />
+                  <div className="w-9 h-9 rounded-full bg-purple-600/20 border border-purple-700/40 flex items-center justify-center flex-shrink-0">
+                    <FaClock className="w-5 h-5 text-white" />
+                  </div>
                   <div>
                     <div className="text-gray-400 text-xs">Timezone</div>
                     <div className="text-white text-sm">IST (UTC+5:30)</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaCheckCircle className="text-green-400 mt-1 flex-shrink-0" />
+                  <div className="w-9 h-9 rounded-full bg-green-600/10 border border-green-700/30 flex items-center justify-center flex-shrink-0">
+                    <FaCheckCircle className="w-4 h-4 text-green-300" />
+                  </div>
                   <div>
                     <div className="text-gray-400 text-xs">Status</div>
                     <div className="text-white text-sm">Available for work</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <FaBolt className="text-yellow-400 mt-1 flex-shrink-0" />
+                  <div className="w-9 h-9 rounded-full bg-yellow-600/10 border border-yellow-700/30 flex items-center justify-center flex-shrink-0">
+                    <FaBolt className="w-4 h-4 text-yellow-300" />
+                  </div>
                   <div>
                     <div className="text-gray-400 text-xs">Response Time</div>
                     <div className="text-white text-sm">Within 24 hours</div>
@@ -185,12 +193,14 @@ export default function ContactSection() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-800">
-                  <a 
-                    href={personalInfo.resume_url} 
+                  <a
+                    href={personalInfo.resume_url}
                     download
-                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-purple-500/20 border border-purple-500/50 text-purple-300 font-medium rounded-lg hover:bg-purple-500/30 transition-all duration-300"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-medium rounded-lg shadow-md hover:from-purple-700 hover:to-purple-600 transition-all duration-300"
+                    aria-label="Download resume"
                   >
-                    <FaFileDownload /> Download Resume
+                    <FaFileDownload className="text-white" />
+                    Download Resume
                   </a>
                 </div>
 
