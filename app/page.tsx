@@ -123,26 +123,26 @@ const Hero = () => (
 
 // Combined Terminal + Skills Section (Side by Side)
 const TerminalSkillsSection = () => (
-  <section id="terminal-skills" className="py-12">
-    <div className="max-w-5xl mx-auto px-6">
+  <section id="terminal-skills" className="min-h-screen py-16 flex items-center">
+    <div className="max-w-6xl mx-auto px-6 w-full">
       {/* Section Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
           Explore My <span className="text-purple-400">Skills</span>
         </h2>
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-400 text-base">
           Interactive terminal — type commands to see my tech stack
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 items-start">
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
         {/* Terminal on the Left */}
         <div className="flex-1 w-full">
           <Terminal />
         </div>
         
         {/* Prompts on the Right */}
-        <div className="lg:w-48 w-full p-4 rounded-lg bg-[#0a0a0a] border border-gray-800">
+        <div className="lg:w-64 w-full p-6 rounded-lg bg-[#0a0a0a] border border-gray-800">
           <SkillsSection />
         </div>
       </div>

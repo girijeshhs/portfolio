@@ -93,19 +93,19 @@ Categories: frontend, backend, databases, blockchain, ml, tools`
     <div className="w-full">
       <div className="rounded-lg overflow-hidden border border-gray-800 bg-[#0a0a0a]">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-3 py-2 bg-[#1a1a1a] border-b border-gray-800">
-          <div className="flex items-center gap-2">
-            <div className="flex space-x-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
+        <div className="flex items-center justify-between px-4 py-3 bg-[#1a1a1a] border-b border-gray-800">
+          <div className="flex items-center gap-3">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
             </div>
-            <span className="text-gray-500 text-xs font-mono">girijesh@dev ~ skills</span>
+            <span className="text-gray-500 text-sm font-mono">girijesh@dev ~ skills</span>
           </div>
         </div>
 
         {/* Terminal Content */}
-        <div className="p-3 font-mono text-xs h-[280px] overflow-y-auto">
+        <div className="p-4 font-mono text-sm h-[450px] overflow-y-auto">
           <div className="space-y-1">
             {output.map((line, index) => (
               <div key={index}>
