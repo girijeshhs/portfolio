@@ -27,18 +27,16 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
     whileHover={{ y: -4 }}
     className="group bg-[#0a0a0a] border border-gray-800 rounded-lg overflow-hidden hover:border-purple-500/30 transition-all"
   >
-    {/* Project Header */}
-    <div className="relative h-32 bg-gradient-to-br from-purple-500/5 to-blue-500/5 border-b border-gray-800 flex items-center justify-center">
-      <span className="text-5xl font-bold text-white/5 group-hover:text-purple-500/10 transition-colors">
-        {project.name.charAt(0)}
-      </span>
-      {project.featured && (
-        <div className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30">
-          Featured
-        </div>
-      )}
+    {/* Project Image */}
+    <div className="relative h-48 overflow-hidden">
+      <img 
+        src={project.image} 
+        alt={project.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
       <div className="absolute bottom-2 left-2">
-        <span className="text-[10px] px-2 py-0.5 bg-white/5 rounded text-gray-400 border border-gray-800">
+        <span className="text-[10px] px-2 py-0.5 bg-black/50 backdrop-blur-sm rounded text-gray-300 border border-gray-700">
           {project.category}
         </span>
       </div>
@@ -54,21 +52,6 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
         {project.description}
       </p>
-
-      {/* Tech Stack */}
-      <div className="flex flex-wrap gap-1">
-        {project.tech_stack.slice(0, 3).map((tech) => (
-          <span
-            key={tech}
-            className="text-[10px] px-2 py-0.5 bg-purple-500/10 rounded text-purple-300 border border-purple-500/20"
-          >
-            {tech}
-          </span>
-        ))}
-        {project.tech_stack.length > 3 && (
-          <span className="text-[10px] text-gray-500">+{project.tech_stack.length - 3}</span>
-        )}
-      </div>
 
       {/* Links */}
       <div className="flex gap-3 pt-2 border-t border-gray-800">
