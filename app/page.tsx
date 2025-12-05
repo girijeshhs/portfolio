@@ -85,16 +85,9 @@ const Hero = () => (
           initial="hidden"
           animate="visible"
         >
-          {/* Name badge */}
-          <motion.div variants={animations.fadeInUp}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/5 text-xs uppercase tracking-[0.2em] text-purple-300 border border-purple-500/20">
-              {personalInfo.name}
-            </span>
-          </motion.div>
-          
           {/* Main headline - Name in purple, then tagline */}
           <motion.div variants={animations.fadeInUp} className="relative space-y-2">
-            <h1 className="text-purple-400 text-[36px] md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
+            <h1 className="text-purple-400 text-[36px] md:text-5xl lg:text-6xl font-bold">
               {personalInfo.name}
             </h1>
             <h2 className="text-white text-[28px] md:text-3xl lg:text-4xl font-bold leading-tight">
