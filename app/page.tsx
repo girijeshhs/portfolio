@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Terminal from "./Terminal";
-import { FaLocationArrow, FaArrowDown } from "react-icons/fa";
+import { FaLocationArrow } from "react-icons/fa";
 import ParticlesComponent from "@/components/Particles";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
@@ -66,7 +66,7 @@ const SpotlightGrid = () => (
 
 const Hero = () => (
   <motion.div 
-    className="pb-16 pt-20 relative min-h-[85vh] flex items-center"
+    className="pb-16 pt-20 relative min-h-screen flex items-center"
     variants={animations.fadeIn}
     initial="hidden"
     animate="visible"
@@ -92,12 +92,14 @@ const Hero = () => (
             </span>
           </motion.div>
           
-          {/* Main headline */}
-          <motion.div variants={animations.fadeInUp} className="relative">
-            <TextGenerateEffect
-              words={`${personalInfo.title} — ${personalInfo.tagline}`}
-              className="text-white-100 text-[32px] md:text-4xl lg:text-5xl font-bold leading-tight"
-            />
+          {/* Main headline - Name in purple, then tagline */}
+          <motion.div variants={animations.fadeInUp} className="relative space-y-2">
+            <h1 className="text-purple-400 text-[36px] md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
+              {personalInfo.name}
+            </h1>
+            <h2 className="text-white text-[28px] md:text-3xl lg:text-4xl font-bold leading-tight">
+              {personalInfo.tagline}
+            </h2>
           </motion.div>
           
           {/* Bio */}
@@ -123,18 +125,6 @@ const Hero = () => (
         </motion.div>
       </div>
     </div>
-    
-    {/* Scroll indicator */}
-    <motion.div 
-      className="absolute bottom-6 left-1/2 -translate-x-1/2"
-      animate={{ y: [0, 8, 0] }}
-      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <a href="#terminal-skills" className="flex flex-col items-center gap-1 text-gray-500 hover:text-purple-400 transition-colors">
-        <span className="text-[10px] uppercase tracking-widest">Scroll</span>
-        <FaArrowDown className="text-xs" />
-      </a>
-    </motion.div>
   </motion.div>
 );
 
