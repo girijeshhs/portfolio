@@ -107,81 +107,80 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* BOX 2: 4 Section Grid */}
+            {/* BOX 2: Unified Layout */}
             <motion.div 
               variants={itemVariants} 
-              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6"
+              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-8 space-y-6"
             >
-              <div className="grid grid-cols-2 gap-4 h-full">
-                {/* Section 1: Basic Info */}
-                <div className="space-y-2">
-                  <p className="text-gray-400 text-xs">Location: TN, Chennai</p>
-                  <p className="text-gray-400 text-xs">Status: Available for work</p>
-                  <p className="text-gray-400 text-xs">Response: Within 24 hours</p>
-                  <p className="text-gray-400 text-xs">Timezone: IST (UTC+5:30)</p>
+              {/* Section 1 & 2 Combined: Info + Opportunities */}
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-3 p-5 bg-white/5 rounded-lg border border-gray-700/50">
+                  <p className="text-gray-300 text-sm"><span className="text-cyan-400 font-semibold">Location:</span> TN, Chennai</p>
+                  <p className="text-gray-300 text-sm"><span className="text-green-400 font-semibold">Status:</span> Available for work</p>
+                  <p className="text-gray-300 text-sm"><span className="text-yellow-400 font-semibold">Response:</span> Within 24 hours</p>
+                  <p className="text-gray-300 text-sm"><span className="text-purple-400 font-semibold">Timezone:</span> IST (UTC+5:30)</p>
                 </div>
 
-                {/* Section 2: Opportunities */}
-                <div className="space-y-2">
-                  <h5 className="text-white text-xs font-semibold mb-2">Opportunities I'm Seeking</h5>
-                  <p className="text-gray-400 text-xs">• Freelance Projects</p>
-                  <p className="text-gray-400 text-xs">• Full-time Roles</p>
-                  <p className="text-gray-400 text-xs">• Part-time Work</p>
-                  <p className="text-gray-400 text-xs">• Consulting</p>
-                  <p className="text-gray-400 text-xs">• Open Source Collaboration</p>
+                <div className="space-y-3 p-5 bg-white/5 rounded-lg border border-gray-700/50">
+                  <h5 className="text-white text-sm font-bold mb-3">Opportunities I'm Seeking</h5>
+                  <p className="text-gray-300 text-sm">• Freelance Projects</p>
+                  <p className="text-gray-300 text-sm">• Full-time Roles</p>
+                  <p className="text-gray-300 text-sm">• Part-time Work</p>
+                  <p className="text-gray-300 text-sm">• Consulting</p>
+                  <p className="text-gray-300 text-sm">• Open Source Collaboration</p>
                 </div>
+              </div>
 
-                {/* Section 3: Social Links (Big Buttons) */}
-                <div className="space-y-2">
-                  <div className="grid grid-cols-2 gap-2">
-                    <a
-                      href={social_links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
-                    >
-                      <FaGithub className="text-lg text-gray-400" />
-                      <span className="text-xs text-gray-400">GitHub</span>
-                    </a>
-                    <a
-                      href={social_links.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
-                    >
-                      <FaLinkedin className="text-lg text-gray-400" />
-                      <span className="text-xs text-gray-400">LinkedIn</span>
-                    </a>
-                    <a
-                      href={social_links.email}
-                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
-                    >
-                      <FaEnvelope className="text-lg text-gray-400" />
-                      <span className="text-xs text-gray-400">Email</span>
-                    </a>
-                    <a
-                      href={social_links.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
-                    >
-                      <FaTwitter className="text-lg text-gray-400" />
-                      <span className="text-xs text-gray-400">Twitter</span>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Section 4: Resume Download */}
-                <div className="flex flex-col justify-center space-y-2">
-                  <p className="text-gray-400 text-xs">Download my resume here</p>
+              {/* Section 3: Social Links - Full Width */}
+              <div className="p-5 bg-white/5 rounded-lg border border-gray-700/50">
+                <div className="grid grid-cols-4 gap-4">
                   <a
-                    href={personalInfo.resume_url}
-                    download
-                    className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 text-xs"
+                    href={social_links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
                   >
-                    Download Resume
+                    <FaGithub className="text-2xl text-gray-300" />
+                    <span className="text-xs text-gray-300 font-medium">GitHub</span>
+                  </a>
+                  <a
+                    href={social_links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-lg hover:border-blue-500/50 hover:bg-blue-500/10 transition-all"
+                  >
+                    <FaLinkedin className="text-2xl text-gray-300" />
+                    <span className="text-xs text-gray-300 font-medium">LinkedIn</span>
+                  </a>
+                  <a
+                    href={social_links.email}
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+                  >
+                    <FaEnvelope className="text-2xl text-gray-300" />
+                    <span className="text-xs text-gray-300 font-medium">Email</span>
+                  </a>
+                  <a
+                    href={social_links.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
+                  >
+                    <FaTwitter className="text-2xl text-gray-300" />
+                    <span className="text-xs text-gray-300 font-medium">Twitter</span>
                   </a>
                 </div>
+              </div>
+
+              {/* Section 4: Resume Download - Full Width */}
+              <div className="flex flex-col items-center justify-center space-y-4 p-6 bg-white/5 rounded-lg border border-gray-700/50">
+                <p className="text-gray-300 text-sm font-medium">Download my resume here</p>
+                <a
+                  href={personalInfo.resume_url}
+                  download
+                  className="flex items-center justify-center px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 hover:shadow-purple-500/30 text-sm"
+                >
+                  Download Resume
+                </a>
               </div>
             </motion.div>
 
