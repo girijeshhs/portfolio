@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo } from "@/data/portfolio";
-import { FaMapMarkerAlt, FaClock, FaCheckCircle, FaBolt, FaFileDownload } from "react-icons/fa";
+import { personalInfo, social_links } from "@/data/portfolio";
 import Image from "next/image";
 
 const containerVariants = {
@@ -110,55 +109,67 @@ export default function ContactSection() {
             {/* BOX 2: Details */}
             <motion.div 
               variants={itemVariants} 
-              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6"
+              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6 flex flex-col justify-between"
             >
-              <h3 className="text-2xl font-bold text-white mb-6 border-b border-gray-800 pb-3">
-                Details
-              </h3>
-              
-              <div className="space-y-5">
+              {/* Top Half - Location & Resume */}
+              <div className="space-y-6">
                 {/* Location */}
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-cyan-600/20 border border-cyan-700/40 flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="w-5 h-5 text-cyan-300" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-sm font-medium">Location</div>
-                    <div className="text-white text-base mt-1">TN, India</div>
-                  </div>
+                <div>
+                  <p className="text-gray-400 text-sm">Location: TN, India</p>
                 </div>
 
-                {/* Status */}
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-green-600/20 border border-green-700/40 flex items-center justify-center flex-shrink-0">
-                    <FaCheckCircle className="w-5 h-5 text-green-300" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-sm font-medium">Status</div>
-                    <div className="text-white text-base mt-1">Available for work</div>
-                  </div>
+                {/* Open to Work */}
+                <div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Open to work in Freelance projects, Full time roles, Consulting work, Open source collaboration
+                  </p>
                 </div>
 
-                {/* Response Time */}
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-yellow-600/20 border border-yellow-700/40 flex items-center justify-center flex-shrink-0">
-                    <FaBolt className="w-5 h-5 text-yellow-300" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-sm font-medium">Response Time</div>
-                    <div className="text-white text-base mt-1">Within 24 hrs</div>
-                  </div>
-                </div>
-
-                {/* Download Resume Button */}
-                <div className="pt-6 border-t border-gray-800">
+                {/* Resume - Bold Title + Button */}
+                <div className="space-y-3">
+                  <h4 className="text-white font-bold text-base">CHECKOUT MY RESUME OVER HERE</h4>
                   <a
                     href={personalInfo.resume_url}
                     download
-                    className="flex items-center justify-center gap-3 w-full px-6 py-3.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 hover:shadow-purple-500/30"
+                    className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 hover:shadow-purple-500/30 text-sm"
                   >
-                    <FaFileDownload className="w-5 h-5" />
                     Download Resume
+                  </a>
+                </div>
+              </div>
+
+              {/* Bottom Half - Social Links */}
+              <div className="mt-8 pt-6 border-t border-gray-800">
+                <div className="space-y-3">
+                  <a 
+                    href={social_links.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    GitHub: github.com/girijeshhs
+                  </a>
+                  <a 
+                    href={social_links.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    LinkedIn: linkedin.com/in/girijesh-s
+                  </a>
+                  <a 
+                    href={social_links.email}
+                    className="block text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Gmail: girijesh@example.com
+                  </a>
+                  <a 
+                    href={social_links.twitter} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Twitter: twitter.com/girijesh
                   </a>
                 </div>
               </div>
