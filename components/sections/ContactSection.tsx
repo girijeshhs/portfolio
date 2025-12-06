@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { personalInfo, social_links } from "@/data/portfolio";
+import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter } from "react-icons/fa";
 import Image from "next/image";
 
 const containerVariants = {
@@ -106,70 +107,79 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* BOX 2: Details */}
+            {/* BOX 2: 4 Section Grid */}
             <motion.div 
               variants={itemVariants} 
-              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6 flex flex-col justify-between"
+              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6"
             >
-              {/* Top Half - Location & Resume */}
-              <div className="space-y-6">
-                {/* Location */}
-                <div>
-                  <p className="text-gray-400 text-sm">Location: TN, India</p>
+              <div className="grid grid-cols-2 gap-4 h-full">
+                {/* Section 1: Basic Info */}
+                <div className="space-y-2">
+                  <p className="text-gray-400 text-xs">Location: TN, Chennai</p>
+                  <p className="text-gray-400 text-xs">Status: Available for work</p>
+                  <p className="text-gray-400 text-xs">Response: Within 24 hours</p>
+                  <p className="text-gray-400 text-xs">Timezone: IST (UTC+5:30)</p>
                 </div>
 
-                {/* Open to Work */}
-                <div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Open to work in Freelance projects, Full time roles, Consulting work, Open source collaboration
-                  </p>
+                {/* Section 2: Opportunities */}
+                <div className="space-y-2">
+                  <h5 className="text-white text-xs font-semibold mb-2">Opportunities I'm Seeking</h5>
+                  <p className="text-gray-400 text-xs">• Freelance Projects</p>
+                  <p className="text-gray-400 text-xs">• Full-time Roles</p>
+                  <p className="text-gray-400 text-xs">• Part-time Work</p>
+                  <p className="text-gray-400 text-xs">• Consulting</p>
+                  <p className="text-gray-400 text-xs">• Open Source Collaboration</p>
                 </div>
 
-                {/* Resume - Bold Title + Button */}
-                <div className="space-y-3">
-                  <h4 className="text-white font-bold text-base">CHECKOUT MY RESUME OVER HERE</h4>
+                {/* Section 3: Social Links (Big Buttons) */}
+                <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <a
+                      href={social_links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+                    >
+                      <FaGithub className="text-lg text-gray-400" />
+                      <span className="text-xs text-gray-400">GitHub</span>
+                    </a>
+                    <a
+                      href={social_links.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+                    >
+                      <FaLinkedin className="text-lg text-gray-400" />
+                      <span className="text-xs text-gray-400">LinkedIn</span>
+                    </a>
+                    <a
+                      href={social_links.email}
+                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+                    >
+                      <FaEnvelope className="text-lg text-gray-400" />
+                      <span className="text-xs text-gray-400">Email</span>
+                    </a>
+                    <a
+                      href={social_links.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center gap-1 p-3 bg-white/5 border border-gray-700 rounded-lg hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"
+                    >
+                      <FaTwitter className="text-lg text-gray-400" />
+                      <span className="text-xs text-gray-400">Twitter</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Section 4: Resume Download */}
+                <div className="flex flex-col justify-center space-y-2">
+                  <p className="text-gray-400 text-xs">Download my resume here</p>
                   <a
                     href={personalInfo.resume_url}
                     download
-                    className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 hover:shadow-purple-500/30 text-sm"
+                    className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 text-xs"
                   >
                     Download Resume
-                  </a>
-                </div>
-              </div>
-
-              {/* Bottom Half - Social Links */}
-              <div className="mt-8 pt-6 border-t border-gray-800">
-                <div className="space-y-3">
-                  <a 
-                    href={social_links.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    GitHub: github.com/girijeshhs
-                  </a>
-                  <a 
-                    href={social_links.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    LinkedIn: linkedin.com/in/girijesh-s
-                  </a>
-                  <a 
-                    href={social_links.email}
-                    className="block text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Gmail: girijesh@example.com
-                  </a>
-                  <a 
-                    href={social_links.twitter} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block text-gray-400 hover:text-white transition-colors text-sm"
-                  >
-                    Twitter: twitter.com/girijesh
                   </a>
                 </div>
               </div>
