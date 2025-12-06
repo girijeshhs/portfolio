@@ -26,7 +26,7 @@ const Footer = () => {
   return (
     <footer className="bg-black/60 text-white py-6">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="text-sm text-white/80">{personalInfo.name} • © {new Date().getFullYear()}</div>
+        <div className="text-sm text-white/80">{personalInfo.name}</div>
 
         <nav className="flex gap-6">
           {quickLinks.map((link) => (

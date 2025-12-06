@@ -31,12 +31,6 @@ export default function ContactSection() {
     "More achievements here"
   ];
 
-  const availability = [
-    { label: "Freelance", active: true },
-    { label: "Full-time", active: true },
-    { label: "Consulting", active: true },
-  ];
-
   return (
     <section id="contact" className="py-20 relative">
       {/* Background accent */}
@@ -58,7 +52,7 @@ export default function ContactSection() {
           </motion.div>
 
           {/* 2 Box Layout */}
-          <div className="grid lg:grid-cols-[70%_30%] gap-6">
+          <div className="grid lg:grid-cols-[60%_35%] gap-6">
             
             {/* BOX 1: Image (40%) + Achievements (60%) */}
             <motion.div 
@@ -157,25 +151,6 @@ export default function ContactSection() {
                     <FaFileDownload className="w-5 h-5" />
                     Download Resume
                   </a>
-                </div>
-
-                {/* Availability Tags */}
-                <div className="pt-4">
-                  <div className="text-gray-400 text-sm font-medium mb-3">Currently open to:</div>
-                  <div className="flex flex-wrap gap-2">
-                    {availability.map((item) => (
-                      <span
-                        key={item.label}
-                        className={`px-4 py-1.5 rounded-full text-sm font-medium ${
-                          item.active
-                            ? "bg-green-500/20 text-green-300 border border-green-500/30"
-                            : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             </motion.div>
