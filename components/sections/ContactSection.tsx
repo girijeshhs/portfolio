@@ -107,23 +107,38 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* BOX 2: Unified Layout */}
+            {/* BOX 2: Unified Layout (Aligned Labels & Headings) */}
             <motion.div 
               variants={itemVariants} 
               className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-8 space-y-6"
             >
-              {/* Top Section: Info + Opportunities */}
+              {/* Top Section: Info */}
               <div className="space-y-4">
                 <div className="space-y-3">
-                  <p className="text-gray-300 text-sm"><span className="text-cyan-400 font-bold">Location:</span> TN, Chennai</p>
-                  <p className="text-gray-300 text-sm"><span className="text-green-400 font-bold">Status:</span> Available for work</p>
-                  <p className="text-gray-300 text-sm"><span className="text-yellow-400 font-bold">Response:</span> Within 24 hours</p>
-                  <p className="text-gray-300 text-sm"><span className="text-purple-400 font-bold">Timezone:</span> IST (UTC+5:30)</p>
+                  <div>
+                    <h4 className="text-white font-bold text-base">Location</h4>
+                    <p className="text-gray-300 text-sm mt-1">TN, Chennai</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold text-base">Status</h4>
+                    <p className="text-gray-300 text-sm mt-1">Available for work</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold text-base">Response</h4>
+                    <p className="text-gray-300 text-sm mt-1">Within 24 hours</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold text-base">Timezone</h4>
+                    <p className="text-gray-300 text-sm mt-1">IST (UTC+5:30)</p>
+                  </div>
                 </div>
 
                 <div className="pt-4 border-t border-gray-800">
-                  <h5 className="text-white text-base font-bold mb-3">Opportunities I'm Seeking</h5>
-                  <div className="space-y-2">
+                  <h4 className="text-white font-bold text-base mb-3">Opportunities I'm Seeking</h4>
+                  <div className="space-y-2 pl-3">
                     <p className="text-gray-300 text-sm">• Freelance Projects</p>
                     <p className="text-gray-300 text-sm">• Full-time Roles</p>
                     <p className="text-gray-300 text-sm">• Part-time Work</p>
@@ -175,7 +190,7 @@ export default function ContactSection() {
 
               {/* Resume Download */}
               <div className="pt-4 border-t border-gray-800 flex flex-col items-center space-y-4">
-                <p className="text-gray-300 text-sm font-medium">Download my resume here</p>
+                <h4 className="text-white font-bold text-base">Download my resume here</h4>
                 <a
                   href={personalInfo.resume_url}
                   download
