@@ -112,28 +112,30 @@ export default function ContactSection() {
               variants={itemVariants} 
               className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-8 space-y-6"
             >
-              {/* Section 1 & 2 Combined: Info + Opportunities */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-3 p-5 bg-white/5 rounded-lg border border-gray-700/50">
-                  <p className="text-gray-300 text-sm"><span className="text-cyan-400 font-semibold">Location:</span> TN, Chennai</p>
-                  <p className="text-gray-300 text-sm"><span className="text-green-400 font-semibold">Status:</span> Available for work</p>
-                  <p className="text-gray-300 text-sm"><span className="text-yellow-400 font-semibold">Response:</span> Within 24 hours</p>
-                  <p className="text-gray-300 text-sm"><span className="text-purple-400 font-semibold">Timezone:</span> IST (UTC+5:30)</p>
+              {/* Top Section: Info + Opportunities */}
+              <div className="space-y-4">
+                <div className="space-y-3">
+                  <p className="text-gray-300 text-sm"><span className="text-cyan-400 font-bold">Location:</span> TN, Chennai</p>
+                  <p className="text-gray-300 text-sm"><span className="text-green-400 font-bold">Status:</span> Available for work</p>
+                  <p className="text-gray-300 text-sm"><span className="text-yellow-400 font-bold">Response:</span> Within 24 hours</p>
+                  <p className="text-gray-300 text-sm"><span className="text-purple-400 font-bold">Timezone:</span> IST (UTC+5:30)</p>
                 </div>
 
-                <div className="space-y-3 p-5 bg-white/5 rounded-lg border border-gray-700/50">
-                  <h5 className="text-white text-sm font-bold mb-3">Opportunities I'm Seeking</h5>
-                  <p className="text-gray-300 text-sm">• Freelance Projects</p>
-                  <p className="text-gray-300 text-sm">• Full-time Roles</p>
-                  <p className="text-gray-300 text-sm">• Part-time Work</p>
-                  <p className="text-gray-300 text-sm">• Consulting</p>
-                  <p className="text-gray-300 text-sm">• Open Source Collaboration</p>
+                <div className="pt-4 border-t border-gray-800">
+                  <h5 className="text-white text-base font-bold mb-3">Opportunities I'm Seeking</h5>
+                  <div className="space-y-2">
+                    <p className="text-gray-300 text-sm">• Freelance Projects</p>
+                    <p className="text-gray-300 text-sm">• Full-time Roles</p>
+                    <p className="text-gray-300 text-sm">• Part-time Work</p>
+                    <p className="text-gray-300 text-sm">• Consulting</p>
+                    <p className="text-gray-300 text-sm">• Open Source Collaboration</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Section 3: Social Links - Full Width */}
-              <div className="p-5 bg-white/5 rounded-lg border border-gray-700/50">
-                <div className="grid grid-cols-4 gap-4">
+              {/* Social Links */}
+              <div className="pt-4 border-t border-gray-800">
+                <div className="grid grid-cols-4 gap-3">
                   <a
                     href={social_links.github}
                     target="_blank"
@@ -171,8 +173,8 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Section 4: Resume Download - Full Width */}
-              <div className="flex flex-col items-center justify-center space-y-4 p-6 bg-white/5 rounded-lg border border-gray-700/50">
+              {/* Resume Download */}
+              <div className="pt-4 border-t border-gray-800 flex flex-col items-center space-y-4">
                 <p className="text-gray-300 text-sm font-medium">Download my resume here</p>
                 <a
                   href={personalInfo.resume_url}
