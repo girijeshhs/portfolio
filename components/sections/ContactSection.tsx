@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { personalInfo, social_links } from "@/data/portfolio";
-import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaFileDownload, FaMapMarkerAlt, FaClock, FaCheckCircle, FaBolt } from "react-icons/fa";
+import { personalInfo } from "@/data/portfolio";
+import { FaMapMarkerAlt, FaClock, FaCheckCircle, FaBolt, FaFileDownload } from "react-icons/fa";
+import Image from "next/image";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
   }
 };
 
@@ -23,22 +23,12 @@ const itemVariants = {
 };
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
-  };
-
-  const socials = [
-    { name: "GitHub", icon: FaGithub, url: social_links.github, handle: "@girijeshhs" },
-    { name: "LinkedIn", icon: FaLinkedin, url: social_links.linkedin, handle: "girijesh-s" },
-    { name: "Email", icon: FaEnvelope, url: social_links.email, handle: personalInfo.email },
-    ...(social_links.twitter ? [{ name: "Twitter", icon: FaTwitter, url: social_links.twitter, handle: "@girijesh" }] : []),
+  const achievements = [
+    "Worked in Plant Green",
+    "Head in AI Zephyr",
+    "3rd Prize in Hackathon",
+    "Another Point",
+    "More achievements here"
   ];
 
   const availability = [
@@ -63,154 +53,120 @@ export default function ContactSection() {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Let's Work <span className="text-purple-400">Together</span>
+              Let's <span className="text-cyan-400">Work</span> Together
             </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-              Open to collaborations, freelance work, and full-time opportunities
-            </p>
           </motion.div>
 
-          {/* 3 Column Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Column 1: Contact Form */}
-            <motion.div variants={itemVariants} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
-                  />
+          {/* 2 Box Layout */}
+          <div className="grid lg:grid-cols-[70%_30%] gap-6">
+            
+            {/* BOX 1: Image (40%) + Achievements (60%) */}
+            <motion.div 
+              variants={itemVariants} 
+              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden"
+            >
+              <div className="flex flex-col md:flex-row h-full">
+                {/* Left: Image (40%) */}
+                <div className="md:w-[40%] relative min-h-[250px] md:min-h-full bg-gradient-to-br from-purple-900/20 to-cyan-900/20">
+                  <div className="absolute inset-0 flex items-center justify-center p-4">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/assets/images/contact-image.jpg"
+                        alt="Visual representation"
+                        fill
+                        className="object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20"
-                >
-                  Send Message
-                </button>
-                {isSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-green-400 text-sm text-center flex items-center justify-center gap-2"
-                  >
-                    <FaCheckCircle /> Message sent successfully!
-                  </motion.div>
-                )}
-              </form>
-            </motion.div>
 
-            {/* Column 2: Social Links */}
-            <motion.div variants={itemVariants} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-6">Find Me Online</h3>
-              <div className="space-y-4">
-                {socials.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-3 rounded-lg bg-white/5 border border-gray-800 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300 group"
-                    >
-                      <div className="w-10 h-10 rounded-full bg-white/5 border border-gray-700 flex items-center justify-center group-hover:border-purple-500/50 transition-colors">
-                        <Icon className="text-lg text-gray-400 group-hover:text-purple-400 transition-colors" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-white font-medium text-sm">{social.name}</div>
-                        <div className="text-gray-500 text-xs group-hover:text-purple-400 transition-colors">{social.handle}</div>
-                      </div>
-                    </a>
-                  );
-                })}
+                {/* Right: Achievements (60%) */}
+                <div className="md:w-[60%] p-6 flex flex-col justify-center">
+                  <div className="space-y-3">
+                    {achievements.map((achievement, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="flex items-start gap-3 group"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 group-hover:scale-150 transition-transform flex-shrink-0" />
+                        <p className="text-gray-300 text-base leading-relaxed">
+                          {achievement}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Column 3: Quick Details */}
-            <motion.div variants={itemVariants} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-6">Quick Details</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-purple-600/20 border border-purple-700/40 flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="w-5 h-5 text-white" />
+            {/* BOX 2: Details */}
+            <motion.div 
+              variants={itemVariants} 
+              className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-gray-800 rounded-xl p-6"
+            >
+              <h3 className="text-2xl font-bold text-white mb-6 border-b border-gray-800 pb-3">
+                Details
+              </h3>
+              
+              <div className="space-y-5">
+                {/* Location */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-cyan-600/20 border border-cyan-700/40 flex items-center justify-center flex-shrink-0">
+                    <FaMapMarkerAlt className="w-5 h-5 text-cyan-300" />
                   </div>
                   <div>
-                    <div className="text-gray-400 text-xs">Location</div>
-                    <div className="text-white text-sm">{personalInfo.location}</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-purple-600/20 border border-purple-700/40 flex items-center justify-center flex-shrink-0">
-                    <FaClock className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-xs">Timezone</div>
-                    <div className="text-white text-sm">IST (UTC+5:30)</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-green-600/10 border border-green-700/30 flex items-center justify-center flex-shrink-0">
-                    <FaCheckCircle className="w-4 h-4 text-green-300" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-xs">Status</div>
-                    <div className="text-white text-sm">Available for work</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-full bg-yellow-600/10 border border-yellow-700/30 flex items-center justify-center flex-shrink-0">
-                    <FaBolt className="w-4 h-4 text-yellow-300" />
-                  </div>
-                  <div>
-                    <div className="text-gray-400 text-xs">Response Time</div>
-                    <div className="text-white text-sm">Within 24 hours</div>
+                    <div className="text-gray-400 text-sm font-medium">Location</div>
+                    <div className="text-white text-base mt-1">TN, India</div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-800">
+                {/* Status */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-green-600/20 border border-green-700/40 flex items-center justify-center flex-shrink-0">
+                    <FaCheckCircle className="w-5 h-5 text-green-300" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-sm font-medium">Status</div>
+                    <div className="text-white text-base mt-1">Available for work</div>
+                  </div>
+                </div>
+
+                {/* Response Time */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-yellow-600/20 border border-yellow-700/40 flex items-center justify-center flex-shrink-0">
+                    <FaBolt className="w-5 h-5 text-yellow-300" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-sm font-medium">Response Time</div>
+                    <div className="text-white text-base mt-1">Within 24 hrs</div>
+                  </div>
+                </div>
+
+                {/* Download Resume Button */}
+                <div className="pt-6 border-t border-gray-800">
                   <a
                     href={personalInfo.resume_url}
                     download
-                    className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-medium rounded-lg shadow-md hover:from-purple-700 hover:to-purple-600 transition-all duration-300"
-                    aria-label="Download resume"
+                    className="flex items-center justify-center gap-3 w-full px-6 py-3.5 bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold rounded-lg shadow-lg hover:from-purple-700 hover:to-purple-600 transition-all duration-300 hover:shadow-purple-500/30"
                   >
-                    <FaFileDownload className="text-white" />
+                    <FaFileDownload className="w-5 h-5" />
                     Download Resume
                   </a>
                 </div>
 
+                {/* Availability Tags */}
                 <div className="pt-4">
-                  <div className="text-gray-400 text-xs mb-3">Currently open to:</div>
+                  <div className="text-gray-400 text-sm font-medium mb-3">Currently open to:</div>
                   <div className="flex flex-wrap gap-2">
                     {availability.map((item) => (
                       <span
                         key={item.label}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium ${
                           item.active
                             ? "bg-green-500/20 text-green-300 border border-green-500/30"
                             : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
@@ -223,6 +179,7 @@ export default function ContactSection() {
                 </div>
               </div>
             </motion.div>
+
           </div>
         </motion.div>
       </div>
