@@ -24,15 +24,22 @@ const itemVariants = {
 
 export default function ContactSection() {
   const achievements = [
-    "Worked in Plant Green",
-    "Head in AI Zephyr",
-    "3rd Prize in Hackathon",
-    "Another Point",
-    "More achievements here"
+    { 
+      title: "3RD PRIZE WINNER – CREONIX HACKATHON", 
+      description: "Developed a working prototype under time pressure and secured 3rd place among competing engineering teams."
+    },
+    { 
+      title: "FULL STACK DEVELOPER INTERN AT PLANT GREEN", 
+      description: "Built core features for their LMS and official website using React, Node.js, APIs, and databases — improving platform scalability and usability."
+    },
+    { 
+      title: "EVENT COORDINATOR – AI ZYPHER (100+ PARTICIPANTS)", 
+      description: "Led the 'Code Auction' event, handled logistics, engagement, and execution — strong leadership + communication flex."
+    }
   ];
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="min-h-screen py-20 relative flex items-center">
       {/* Background accent */}
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[150px] pointer-events-none" />
       
@@ -76,8 +83,8 @@ export default function ContactSection() {
                 </div>
 
                 {/* Right: Achievements (60%) */}
-                <div className="md:w-[60%] p-6 flex flex-col justify-center">
-                  <div className="space-y-3">
+                <div className="md:w-[60%] p-8 flex flex-col justify-center">
+                  <div className="space-y-8">
                     {achievements.map((achievement, index) => (
                       <motion.div
                         key={index}
@@ -85,11 +92,13 @@ export default function ContactSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="flex items-start gap-3 group"
+                        className="group"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 group-hover:scale-150 transition-transform flex-shrink-0" />
-                        <p className="text-gray-300 text-base leading-relaxed">
-                          {achievement}
+                        <h4 className="text-white font-bold text-base mb-2">
+                          {achievement.title}
+                        </h4>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                          {achievement.description}
                         </p>
                       </motion.div>
                     ))}
