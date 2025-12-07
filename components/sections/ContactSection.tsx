@@ -113,70 +113,66 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* BOX 2: Unified Layout (Aligned Labels & Headings) */}
+            {/* BOX 2: Card-based Layout */}
             <motion.div 
               variants={itemVariants} 
-              className="relative overflow-hidden rounded-2xl border border-white/15 bg-black/25 backdrop-blur-sm p-8 space-y-7 shadow-xl shadow-black/25"
+              className="relative overflow-hidden rounded-2xl border border-white/15 bg-black/25 backdrop-blur-sm p-6 space-y-4 shadow-xl shadow-black/25"
             >
-              {/* Top Section: Info (inline arrow + tilde, single-line rows) */}
-              <div className="space-y-5 relative">
-                <div className="grid gap-3">
-                  {[ 
-                    { label: "Location", value: "TN, Chennai" },
-                    { label: "Status", value: "Available for work" },
-                    { label: "Response", value: "Within 24 hours" },
-                    { label: "Timezone", value: "IST (UTC+5:30)" }
-                  ].map((item, idx) => (
-                    <div
-                      key={item.label}
-                      className="flex items-center justify-between gap-4 rounded-lg border border-white/10 bg-black/20 px-4 py-3 backdrop-blur-sm transition-colors hover:border-cyan-400/25"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-green-400">➜</span>
-                        <span className="text-cyan-400">~</span>
-                        <span className="text-white font-semibold font-mono tracking-wide text-sm">{item.label}</span>
-                      </div>
-                      <p className="text-gray-200 text-sm font-medium">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
+              {/* Info Cards */}
+              <div className="space-y-3">
+                {[ 
+                  { icon: "📍", label: "Chennai" },
+                  { icon: "⚡", label: "Available" },
+                  { icon: "⚡", label: "Responds<24h" },
+                  { icon: "🕐", label: "IST (UTC+5:30)" }
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-5 py-3.5 backdrop-blur-sm"
+                  >
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-white font-medium text-base">{item.label}</span>
+                  </div>
+                ))}
+              </div>
 
-                <div className="pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="h-px w-8 bg-white/30" />
-                    <h4 className="text-white font-semibold text-base font-mono tracking-wide">Opportunities I'm Seeking</h4>
-                  </div>
-                  <div className="space-y-2 pl-3">
-                    {["Freelance Projects", "Full-time Roles", "Part-time Work", "Consulting", "Open Source Collaboration"].map(
-                      (item) => (
-                        <p key={item} className="text-gray-200 text-sm flex items-center gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                          {item}
-                        </p>
-                      )
-                    )}
-                  </div>
+              {/* Opportunities Section */}
+              <div className="pt-4">
+                <h4 className="text-white font-bold text-lg mb-4">
+                  Opportunities<br />I'm Open To
+                </h4>
+                <div className="flex flex-wrap gap-2.5">
+                  {["Freelance", "Full-time", "Part-time", "Consulting", "Open Source"].map(
+                    (item) => (
+                      <span
+                        key={item}
+                        className="px-4 py-2 rounded-full border border-cyan-400/40 bg-black/20 text-cyan-400 text-sm font-medium backdrop-blur-sm"
+                      >
+                        {item}
+                      </span>
+                    )
+                  )}
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="pt-4 border-t border-white/10 relative">
+              <div className="pt-4">
                 <div className="grid grid-cols-4 gap-3">
                   {[ 
-                    { href: social_links.github, label: "GitHub", icon: <FaGithub className="text-xl" /> },
-                    { href: social_links.linkedin, label: "LinkedIn", icon: <FaLinkedin className="text-xl" /> },
-                    { href: social_links.email, label: "Email", icon: <FaEnvelope className="text-xl" /> },
-                    { href: social_links.twitter, label: "Twitter", icon: <FaTwitter className="text-xl" /> }
+                    { href: social_links.github, label: "GITHUB", icon: <FaGithub className="text-2xl" /> },
+                    { href: social_links.linkedin, label: "LINKEDIN", icon: <FaLinkedin className="text-2xl" /> },
+                    { href: social_links.email, label: "EMAIL", icon: <FaEnvelope className="text-2xl" /> },
+                    { href: social_links.twitter, label: "TWITTER", icon: <FaTwitter className="text-2xl" /> }
                   ].map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-black/20 px-4 py-4 text-gray-100 shadow-sm shadow-black/40 backdrop-blur-sm transition-all duration-150 hover:-translate-y-1 hover:border-cyan-300/30"
+                      className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-black/20 p-4 backdrop-blur-sm transition-all duration-150 hover:border-white/25"
                     >
-                      <span className="text-2xl text-white/90 group-hover:text-cyan-300 transition-colors">{item.icon}</span>
-                      <span className="text-xs font-semibold uppercase tracking-wide text-gray-200 group-hover:text-white">
+                      <span className="text-white/90 group-hover:text-white transition-colors">{item.icon}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
                         {item.label}
                       </span>
                     </a>
@@ -185,13 +181,13 @@ export default function ContactSection() {
               </div>
 
               {/* Resume Download */}
-              <div className="pt-4 border-t border-white/10 flex flex-col items-center space-y-3 relative">
-                <h4 className="text-white font-black text-xl text-center font-mono">Download my resume</h4>
+              <div className="pt-4">
                 <a
                   href={personalInfo.resume_url}
                   download
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-black/20 text-white font-semibold shadow-sm shadow-black/40 border border-white/10 backdrop-blur-sm hover:border-cyan-300/30 hover:-translate-y-[2px] transition-all duration-200 text-sm"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-black/20 text-white font-bold text-base border border-cyan-400/40 backdrop-blur-sm hover:border-cyan-400/60 hover:bg-black/30 transition-all duration-200"
                 >
+                  <span className="text-lg">⬇</span>
                   Download Resume
                 </a>
               </div>
