@@ -56,17 +56,16 @@ export default function ContactSection() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-3">
-            <p className="text-sm uppercase tracking-[0.3em] text-gray-400 font-mono">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono">
+              Let's <span className="text-white">Work</span> Together
+            </h2>
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-400 font-mono mt-2">
               Collab / Hire / Build
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono">
-              Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-300 to-purple-400 drop-shadow-[0_0_18px_rgba(56,189,248,0.35)]">Work</span> Together
-            </h2>
-            <div className="mx-auto h-px w-32 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
           </motion.div>
 
           {/* 2 Box Layout */}
-          <div className="grid lg:grid-cols-[60%_35%] gap-6">
+          <div className="grid lg:grid-cols-[70%_30%] gap-6">
             
             {/* BOX 1: Image (40%) + Achievements (60%) */}
             <motion.div 
@@ -101,11 +100,7 @@ export default function ContactSection() {
                         viewport={{ once: true }}
                         className="group"
                       >
-                        <div className="flex items-center gap-3 text-cyan-300 text-xs font-semibold tracking-[0.2em] uppercase font-mono">
-                          <span className="h-[1px] w-6 bg-gradient-to-r from-cyan-400 to-purple-400" />
-                          Milestone {index + 1}
-                        </div>
-                        <h4 className="text-white font-black text-lg md:text-xl mt-2 leading-tight font-mono">
+                        <h4 className="text-white font-black text-lg md:text-xl leading-tight font-mono">
                           {achievement.title}
                         </h4>
                         <p className="text-gray-300 text-sm leading-relaxed mt-2">
@@ -191,11 +186,6 @@ export default function ContactSection() {
 
               {/* Resume Download */}
               <div className="pt-4 border-t border-white/10 flex flex-col items-center space-y-3 relative">
-                <div className="flex items-center gap-3 text-gray-300 font-mono uppercase tracking-[0.2em] text-xs">
-                  <span className="h-px w-10 bg-white/30" />
-                  Resume
-                  <span className="h-px w-10 bg-white/30" />
-                </div>
                 <h4 className="text-white font-black text-xl text-center font-mono">Download my resume</h4>
                 <a
                   href={personalInfo.resume_url}
