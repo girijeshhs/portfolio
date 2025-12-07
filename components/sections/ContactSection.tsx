@@ -116,10 +116,10 @@ export default function ContactSection() {
             {/* BOX 2: Card-based Layout */}
             <motion.div 
               variants={itemVariants} 
-              className="relative overflow-hidden rounded-2xl border border-white/15 bg-black/25 backdrop-blur-sm p-6 space-y-4 shadow-xl shadow-black/25"
+              className="relative overflow-hidden rounded-2xl border border-white/15 bg-black/25 backdrop-blur-sm p-5 space-y-4 shadow-xl shadow-black/25"
             >
               {/* Info Cards */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {[ 
                   { icon: "📍", label: "Chennai" },
                   { icon: "⚡", label: "Available" },
@@ -128,25 +128,25 @@ export default function ContactSection() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-5 py-3.5 backdrop-blur-sm"
+                    className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/20 px-3.5 py-2.5 backdrop-blur-sm"
                   >
-                    <span className="text-lg">{item.icon}</span>
-                    <span className="text-white font-medium text-base">{item.label}</span>
+                    <span className="text-base">{item.icon}</span>
+                    <span className="text-white font-medium text-sm">{item.label}</span>
                   </div>
                 ))}
               </div>
 
               {/* Opportunities Section */}
-              <div className="pt-4">
-                <h4 className="text-white font-bold text-lg mb-4">
+              <div className="pt-2">
+                <h4 className="text-white font-bold text-base mb-3">
                   Opportunities<br />I'm Open To
                 </h4>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {["Freelance", "Full-time", "Part-time", "Consulting", "Open Source"].map(
                     (item) => (
                       <span
                         key={item}
-                        className="px-4 py-2 rounded-full border border-cyan-400/40 bg-black/20 text-cyan-400 text-sm font-medium backdrop-blur-sm"
+                        className="px-3 py-1.5 rounded-full border border-cyan-400/40 bg-black/20 text-cyan-400 text-xs font-medium backdrop-blur-sm"
                       >
                         {item}
                       </span>
@@ -156,23 +156,23 @@ export default function ContactSection() {
               </div>
 
               {/* Social Links */}
-              <div className="pt-4">
-                <div className="grid grid-cols-4 gap-3">
+              <div className="pt-2">
+                <div className="grid grid-cols-4 gap-2">
                   {[ 
-                    { href: social_links.github, label: "GITHUB", icon: <FaGithub className="text-2xl" /> },
-                    { href: social_links.linkedin, label: "LINKEDIN", icon: <FaLinkedin className="text-2xl" /> },
-                    { href: social_links.email, label: "EMAIL", icon: <FaEnvelope className="text-2xl" /> },
-                    { href: social_links.twitter, label: "TWITTER", icon: <FaTwitter className="text-2xl" /> }
+                    { href: social_links.github, label: "GITHUB", icon: <FaGithub className="text-xl" /> },
+                    { href: social_links.linkedin, label: "LINKEDIN", icon: <FaLinkedin className="text-xl" /> },
+                    { href: social_links.email, label: "EMAIL", icon: <FaEnvelope className="text-xl" /> },
+                    { href: social_links.twitter, label: "TWITTER", icon: <FaTwitter className="text-xl" /> }
                   ].map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-black/20 p-4 backdrop-blur-sm transition-all duration-150 hover:border-white/25"
+                      className="group flex flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-black/20 py-3 px-2 backdrop-blur-sm transition-all duration-150 hover:border-white/25"
                     >
                       <span className="text-white/90 group-hover:text-white transition-colors">{item.icon}</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
                         {item.label}
                       </span>
                     </a>
@@ -181,13 +181,13 @@ export default function ContactSection() {
               </div>
 
               {/* Resume Download */}
-              <div className="pt-4">
+              <div className="pt-2">
                 <a
                   href={personalInfo.resume_url}
                   download
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-black/20 text-white font-bold text-base border border-cyan-400/40 backdrop-blur-sm hover:border-cyan-400/60 hover:bg-black/30 transition-all duration-200"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-black/20 text-white font-bold text-sm border border-cyan-400/40 backdrop-blur-sm hover:border-cyan-400/60 hover:bg-black/30 transition-all duration-200"
                 >
-                  <span className="text-lg">⬇</span>
+                  <span className="text-base">⬇</span>
                   Download Resume
                 </a>
               </div>
