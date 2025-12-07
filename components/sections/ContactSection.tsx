@@ -121,32 +121,32 @@ export default function ContactSection() {
               {/* Info Cards */}
               <div className="space-y-2">
                 {[ 
-                  { icon: "📍", label: "Chennai" },
-                  { icon: "⚡", label: "Available" },
-                  { icon: "⚡", label: "Responds<24h" },
-                  { icon: "🕐", label: "IST (UTC+5:30)" }
+                  { label: "Location", value: "Chennai" },
+                  { label: "Status", value: "Available" },
+                  { label: "Response", value: "Within 24h" },
+                  { label: "Timezone", value: "IST (UTC+5:30)" }
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/20 px-3.5 py-2.5 backdrop-blur-sm"
+                    className="flex items-center justify-between rounded-lg border border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-sm"
                   >
-                    <span className="text-base">{item.icon}</span>
-                    <span className="text-white font-medium text-sm">{item.label}</span>
+                    <span className="text-gray-400 font-medium text-sm">{item.label}</span>
+                    <span className="text-white font-medium text-sm">{item.value}</span>
                   </div>
                 ))}
               </div>
 
               {/* Opportunities Section */}
-              <div className="pt-2">
-                <h4 className="text-white font-bold text-base mb-3">
-                  Opportunities<br />I'm Open To
+              <div className="pt-2 border-t border-white/10">
+                <h4 className="text-white font-semibold text-base mb-3">
+                  Opportunities I'm Open To
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {["Freelance", "Full-time", "Part-time", "Consulting", "Open Source"].map(
                     (item) => (
                       <span
                         key={item}
-                        className="px-3 py-1.5 rounded-full border border-cyan-400/40 bg-black/20 text-cyan-400 text-xs font-medium backdrop-blur-sm"
+                        className="px-3 py-1.5 rounded-lg border border-white/20 bg-black/30 text-gray-200 text-xs font-medium backdrop-blur-sm hover:border-white/30 hover:text-white transition-colors"
                       >
                         {item}
                       </span>
@@ -156,7 +156,7 @@ export default function ContactSection() {
               </div>
 
               {/* Social Links */}
-              <div className="pt-2">
+              <div className="pt-2 border-t border-white/10">
                 <div className="grid grid-cols-4 gap-2">
                   {[ 
                     { href: social_links.github, label: "GITHUB", icon: <FaGithub className="text-xl" /> },
@@ -169,10 +169,10 @@ export default function ContactSection() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-black/20 py-3 px-2 backdrop-blur-sm transition-all duration-150 hover:border-white/25"
+                      className="group flex flex-col items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-black/20 py-3 px-2 backdrop-blur-sm transition-all duration-150 hover:border-white/25 hover:bg-black/30"
                     >
-                      <span className="text-white/90 group-hover:text-white transition-colors">{item.icon}</span>
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-gray-300 group-hover:text-white">
+                      <span className="text-gray-300 group-hover:text-white transition-colors">{item.icon}</span>
+                      <span className="text-[9px] font-semibold uppercase tracking-wider text-gray-400 group-hover:text-gray-200">
                         {item.label}
                       </span>
                     </a>
@@ -181,13 +181,15 @@ export default function ContactSection() {
               </div>
 
               {/* Resume Download */}
-              <div className="pt-2">
+              <div className="pt-2 border-t border-white/10">
                 <a
                   href={personalInfo.resume_url}
                   download
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-black/20 text-white font-bold text-sm border border-cyan-400/40 backdrop-blur-sm hover:border-cyan-400/60 hover:bg-black/30 transition-all duration-200"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-black/30 text-white font-semibold text-sm border border-white/20 backdrop-blur-sm hover:border-white/30 hover:bg-black/40 transition-all duration-200"
                 >
-                  <span className="text-base">⬇</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
                   Download Resume
                 </a>
               </div>
