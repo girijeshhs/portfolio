@@ -11,6 +11,7 @@ import MagicButton from "@/components/MagicButton";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
+import TerminalContactSection from "@/components/sections/TerminalContactSection";
 import { personalInfo } from "@/data/portfolio";
 
 // Enhanced Animation variants
@@ -222,6 +223,9 @@ export default function Home() {
       <SectionDivider />
       
       <AchievementsSection />
+      <SectionDivider />
+      
+      <TerminalContactSection />
     </main>
   );
 }

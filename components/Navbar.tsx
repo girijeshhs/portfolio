@@ -17,7 +17,7 @@ const Navbar = () => {
     { name: "Skills", href: "/#terminal-skills" },
     { name: "Projects", href: "/#projects" },
     { name: "Achievements", href: "/#achievements" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   // Control navbar visibility based on scroll
