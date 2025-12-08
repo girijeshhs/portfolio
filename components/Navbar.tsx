@@ -13,10 +13,11 @@ const Navbar = () => {
 
   // Navigation links
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Skills", href: "#terminal-skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Skills", href: "/#terminal-skills" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Achievements", href: "/#achievements" },
+    { name: "Contact", href: "/contact" },
   ];
 
   // Control navbar visibility based on scroll

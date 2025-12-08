@@ -10,7 +10,7 @@ import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import MagicButton from "@/components/MagicButton";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
-import ContactSection from "@/components/sections/ContactSection";
+import AchievementsSection from "@/components/sections/AchievementsSection";
 import { personalInfo } from "@/data/portfolio";
 
 // Enhanced Animation variants
@@ -221,7 +221,7 @@ export default function Home() {
       <ProjectsSection />
       <SectionDivider />
       
-      <ContactSection />
+      <AchievementsSection />
     </main>
   );
 }
