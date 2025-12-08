@@ -141,12 +141,12 @@ export default function ContactSection() {
                 <h4 className="text-white font-semibold text-base mb-3">
                   Opportunities I'm Open To
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {["Freelance", "Full-time", "Part-time", "Consulting", "Open Source"].map(
                     (item) => (
                       <span
                         key={item}
-                        className="px-3 py-1.5 rounded-lg border border-white/20 bg-black/30 text-gray-200 text-xs font-medium backdrop-blur-sm hover:border-white/30 hover:text-white transition-colors"
+                        className="px-3 py-1.5 rounded-lg border border-white/20 bg-black/30 text-gray-200 text-xs font-medium backdrop-blur-sm hover:border-white/30 hover:text-white transition-colors text-center"
                       >
                         {item}
                       </span>
