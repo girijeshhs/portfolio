@@ -1,50 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaTrophy, FaBriefcase, FaMicrophone, FaAward, FaCode, FaRocket } from "react-icons/fa";
 
 const achievements = [
   {
     id: 1,
-    icon: FaTrophy,
     title: "3rd Prize Winner – Creonix Hackathon",
     category: "Competition",
     year: "2024",
     description: "Built a working prototype under pressure and secured 3rd place among competing engineering teams.",
     skills: ["Prototyping", "Team Collaboration", "Problem Solving"],
-    impact: "Top 3 Finish",
-    color: "from-yellow-500 to-orange-500",
-    borderColor: "border-yellow-500/30",
-    bgColor: "from-yellow-500/10 to-orange-500/10",
-    accentColor: "text-yellow-400"
+    impact: "Top 3 Finish"
   },
   {
     id: 2,
-    icon: FaBriefcase,
     title: "Full Stack Developer Intern – Plant Green",
     category: "Experience",
     year: "2023",
     description: "Delivered core LMS + web features with React, Node.js, APIs, and database, boosting usability and scalability.",
     skills: ["React", "Node.js", "Database Design", "API Development"],
-    impact: "Production Impact",
-    color: "from-blue-500 to-cyan-500",
-    borderColor: "border-blue-500/30",
-    bgColor: "from-blue-500/10 to-cyan-500/10",
-    accentColor: "text-blue-400"
+    impact: "Production Impact"
   },
   {
     id: 3,
-    icon: FaMicrophone,
     title: "Event Coordinator – AI Zypher (100+)",
     category: "Leadership",
     year: "2023",
     description: "Led the 'Code Auction' event end-to-end: logistics, engagement, and execution – strong leadership + communication flex.",
     skills: ["Event Management", "Communication", "Leadership"],
-    impact: "100+ Attendees",
-    color: "from-purple-500 to-pink-500",
-    borderColor: "border-purple-500/30",
-    bgColor: "from-purple-500/10 to-pink-500/10",
-    accentColor: "text-purple-400"
+    impact: "100+ Attendees"
   }
 ];
 
@@ -52,151 +36,129 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
+  hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
-    x: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
   }
 };
 
 export default function AchievementsSection() {
-  const stats = [
-    { label: "achievements", value: "3+", icon: FaAward, color: "text-purple-400" },
-    { label: "experience", value: "2023-24", icon: FaCode, color: "text-blue-400" },
-    { label: "impact", value: "100+", icon: FaRocket, color: "text-pink-400" }
-  ];
-
   return (
     <section
       id="achievements"
       className="py-20 relative overflow-hidden bg-black"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Terminal Header */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="flex items-center gap-3 mb-2">
-              <FaTrophy className="text-purple-400 text-2xl" />
-              <h2 className="text-3xl md:text-4xl font-black text-white font-mono">
-                <span className="text-purple-400">~/</span>achievements
-              </h2>
-            </div>
-            <p className="text-gray-400 font-mono text-sm ml-11">
+          {/* Header */}
+          <motion.div variants={itemVariants} className="mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono mb-3">
+              <span className="text-purple-400">~/</span>achievements
+            </h2>
+            <p className="text-gray-500 font-mono text-sm">
               <span className="text-purple-400">$</span> Milestones & experience
             </p>
           </motion.div>
 
-          {/* Stats Dashboard */}
-          <motion.div variants={itemVariants} className="grid grid-cols-3 gap-4 mb-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative bg-black/50 border border-gray-800 rounded-lg p-4 backdrop-blur-sm hover:border-purple-500/30 transition-all">
-                  <div className="flex items-center gap-2 mb-1">
-                    <stat.icon className={`text-sm ${stat.color}`} />
-                    <span className="text-xs text-gray-500 font-mono uppercase">{stat.label}</span>
-                  </div>
-                  <div className={`text-2xl md:text-3xl font-black ${stat.color} font-mono`}>
-                    {stat.value}
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Stats Bar */}
+          <motion.div 
+            variants={itemVariants} 
+            className="grid grid-cols-3 gap-6 mb-16 pb-8 border-b border-gray-800/50"
+          >
+            <div className="text-center md:text-left">
+              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">3+</div>
+              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Achievements</div>
+            </div>
+            <div className="text-center md:text-left">
+              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">2023-24</div>
+              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Experience</div>
+            </div>
+            <div className="text-center md:text-left">
+              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">100+</div>
+              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Impact</div>
+            </div>
           </motion.div>
 
           {/* Achievements Grid */}
-          <div className="space-y-4">
-            {achievements.map((achievement, index) => (
+          <div className="space-y-6">
+            {achievements.map((achievement) => (
               <motion.div
                 key={achievement.id}
                 variants={itemVariants}
-                className="group relative"
+                className="group"
               >
-                {/* Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${achievement.bgColor} rounded-xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
-                
-                {/* Card */}
-                <div className={`relative bg-black/80 border ${achievement.borderColor} rounded-xl overflow-hidden backdrop-blur-sm hover:border-opacity-60 transition-all`}>
+                <div className="relative bg-black/60 border border-gray-800/80 hover:border-gray-700/80 rounded-lg overflow-hidden transition-all duration-300">
+                  {/* Top Meta Bar */}
+                  <div className="flex items-center justify-between px-6 py-3 bg-gray-900/30 border-b border-gray-800/50">
+                    <div className="flex items-center gap-4">
+                      <span className="text-xs text-gray-500 font-mono">[{achievement.year}]</span>
+                      <span className="text-xs text-gray-600 font-mono uppercase tracking-wide">
+                        {achievement.category}
+                      </span>
+                    </div>
+                    <span className="text-xs text-gray-500 font-mono">
+                      {achievement.impact}
+                    </span>
+                  </div>
+
+                  {/* Main Content Area */}
                   <div className="p-6 md:p-8">
-                    <div className="flex flex-col md:flex-row md:items-start gap-6">
-                      {/* Left: Icon & Meta */}
-                      <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 md:w-32 flex-shrink-0">
-                        {/* Icon */}
-                        <div className={`relative w-16 h-16 rounded-lg bg-gradient-to-br ${achievement.bgColor} border ${achievement.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                          <achievement.icon className={`text-2xl ${achievement.accentColor}`} />
-                        </div>
+                    <div className="grid md:grid-cols-[1fr_auto] gap-6">
+                      {/* Left: Title & Description */}
+                      <div className="space-y-4">
+                        <h3 className="text-xl md:text-2xl font-black text-white font-mono leading-tight">
+                          {achievement.title}
+                        </h3>
                         
-                        {/* Meta Info */}
-                        <div className="flex md:flex-col gap-2 text-xs font-mono">
-                          <div className={`px-2 py-1 rounded ${achievement.accentColor} bg-current/10 border border-current/20`}>
-                            {achievement.year}
-                          </div>
-                          <div className="px-2 py-1 rounded text-gray-400 bg-gray-800/50 border border-gray-700/50">
-                            {achievement.category}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right: Content */}
-                      <div className="flex-1 space-y-4">
-                        {/* Title & Impact */}
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                          <h3 className="text-xl md:text-2xl font-black text-white font-mono leading-tight">
-                            {achievement.title}
-                          </h3>
-                          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${achievement.accentColor} bg-current/10 border border-current/30 text-xs font-bold font-mono whitespace-nowrap self-start`}>
-                            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-                            {achievement.impact}
-                          </span>
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                           {achievement.description}
                         </p>
+                      </div>
 
-                        {/* Skills */}
-                        <div className="flex flex-wrap gap-2">
-                          {achievement.skills.map((skill, skillIndex) => (
-                            <span
-                              key={skillIndex}
-                              className="px-3 py-1 bg-black/50 border border-gray-800 rounded text-xs text-gray-400 font-mono hover:border-gray-600 hover:text-white transition-all"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                      {/* Right: Skills (Desktop) */}
+                      <div className="hidden md:flex flex-col gap-2 min-w-[200px]">
+                        {achievement.skills.map((skill, idx) => (
+                          <div
+                            key={idx}
+                            className="px-3 py-2 bg-black/40 border border-gray-800 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-gray-700 transition-all text-right"
+                          >
+                            {skill}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Skills (Mobile) */}
+                      <div className="flex md:hidden flex-wrap gap-2 pt-2">
+                        {achievement.skills.map((skill, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1.5 bg-black/40 border border-gray-800 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-gray-700 transition-all"
+                          >
+                            {skill}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom Accent Line */}
-                  <div className={`h-1 bg-gradient-to-r ${achievement.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
+                  {/* Subtle Left Accent */}
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-800 group-hover:bg-purple-500/40 transition-all duration-500" />
                 </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Footer */}
-          <motion.div variants={itemVariants} className="mt-8 text-center">
-            <p className="text-gray-600 text-xs font-mono">
-              <span className="text-purple-400">●</span> Scroll down for more
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </section>
