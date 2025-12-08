@@ -126,90 +126,67 @@ export default function AchievementsSection() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono mb-3">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono mb-3">
               <span className="text-purple-400">~/</span>achievements
             </h2>
-            <p className="text-gray-500 font-mono text-sm">
+                <p className="text-white font-mono text-sm">
               <span className="text-purple-400">$</span> Milestones & experience
             </p>
           </motion.div>
 
-          {/* Stats Bar */}
-          <motion.div 
-            variants={itemVariants} 
-            className="grid grid-cols-3 gap-6 mb-16 pb-8 border-b border-gray-800/50"
-          >
-            <div className="text-center md:text-left">
-              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">4</div>
-              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Achievements</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">2023-24</div>
-              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Experience</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-3xl md:text-4xl font-black text-white font-mono mb-1">100+</div>
-              <div className="text-xs text-gray-600 font-mono uppercase tracking-wider">Impact</div>
-            </div>
-          </motion.div>
+          {/* Stats bar removed per user request */}
 
           {/* Main Grid Layout */}
           <div className="grid lg:grid-cols-[80%_20%] gap-8">
-            {/* Left: Timeline */}
-            <div className="relative">
-            {/* Vertical Timeline Line */}
-            <div className="absolute left-6 top-8 bottom-8 w-px bg-gradient-to-b from-purple-500/50 via-purple-500/20 to-transparent hidden md:block" />
-
-            <div className="space-y-8">
+            {/* Left: Achievements Grid (2x2) */}
+            <div className="grid md:grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (
                 <motion.div
                   key={achievement.id}
                   variants={itemVariants}
-                  className="relative group"
+                  className="group"
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-6 top-8 w-3 h-3 -translate-x-1/2 hidden md:block">
-                    <div className="w-full h-full rounded-full bg-purple-500/80 border-2 border-black group-hover:scale-125 group-hover:bg-purple-400 transition-all duration-300" />
-                  </div>
-
-                  {/* Card */}
-                  <div className="md:ml-16 relative bg-black/60 border border-gray-800/80 hover:border-purple-500/30 rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)]">
+                  <div className="relative bg-black/60 border border-gray-800/80 hover:border-purple-500/30 rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)] h-full flex flex-col">
                     {/* Gradient Overlay on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                     {/* Content */}
-                    <div className="relative p-6 md:p-8">
+                    <div className="relative p-6 flex flex-col flex-1">
                       {/* Header Row */}
-                      <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span className="px-3 py-1 bg-gray-900/50 border border-gray-800 rounded text-xs text-gray-500 font-mono uppercase tracking-wider">
+                      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="px-2 py-1 bg-gray-900/50 border border-gray-800 rounded text-xs text-gray-500 font-mono uppercase tracking-wider">
                             {achievement.category}
                           </span>
-                          <span className="text-sm text-purple-400 font-mono">
-                            {achievement.highlight}
-                          </span>
                         </div>
-                        <div className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-sm text-purple-300 font-mono font-bold">
+                        <div className="px-2 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-xs text-purple-300 font-mono font-bold">
                           {achievement.year}
                         </div>
                       </div>
 
+                      {/* Highlight */}
+                      <div className="mb-3">
+                        <span className="text-xs text-purple-400 font-mono">
+                          {achievement.highlight}
+                        </span>
+                      </div>
+
                       {/* Title */}
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-white font-mono leading-tight mb-4 group-hover:text-purple-50 transition-colors duration-300">
+                      <h3 className="text-xl md:text-2xl font-black text-white font-mono leading-tight mb-3 group-hover:text-purple-50 transition-colors duration-300">
                         {achievement.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-400 leading-relaxed text-base mb-6">
+                      <p className="text-gray-400 leading-relaxed text-sm mb-4 flex-1">
                         {achievement.description}
                       </p>
 
                       {/* Skills Grid */}
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-4">
+                      <div className="grid grid-cols-2 gap-2 mb-3">
                         {achievement.skills.map((skill, idx) => (
                           <div
                             key={idx}
-                            className="px-3 py-2 bg-black/40 border border-gray-800/60 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 text-center"
+                            className="px-2 py-1.5 bg-black/40 border border-gray-800/60 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 text-center"
                           >
                             {skill}
                           </div>
@@ -217,12 +194,12 @@ export default function AchievementsSection() {
                       </div>
 
                       {/* Impact Badge */}
-                      <div className="flex items-center gap-2 pt-4 border-t border-gray-800/50">
+                      <div className="flex items-center gap-2 pt-3 border-t border-gray-800/50">
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                           <span className="text-xs text-gray-600 font-mono uppercase tracking-wide">Impact:</span>
                         </div>
-                        <span className="text-sm text-gray-400 font-mono font-bold">
+                        <span className="text-xs text-gray-400 font-mono font-bold">
                           {achievement.impact}
                         </span>
                       </div>
@@ -231,7 +208,6 @@ export default function AchievementsSection() {
                 </motion.div>
               ))}
             </div>
-          </div>
 
           {/* Right: Live Terminal */}
           <motion.div 
