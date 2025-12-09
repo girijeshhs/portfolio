@@ -115,12 +115,12 @@ export default function AchievementsSection() {
           viewport={{ once: true }}
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-16 text-center">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white font-mono mb-3">
               <span className="text-purple-400">~/</span>achievements
             </h2>
-                <p className="text-white font-mono text-sm">
-              <span className="text-purple-400">$</span> Milestones & experience
+                <p className="text-gray-400 font-mono text-sm">
+              Milestones & experience
             </p>
           </motion.div>
 
