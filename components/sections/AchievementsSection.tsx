@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const achievements = [
   {
@@ -12,7 +13,8 @@ const achievements = [
     description: "Built a working prototype under pressure and secured 3rd place among competing engineering teams.",
     highlight: "Competed against 50+ teams",
     skills: ["Prototyping", "Team Collaboration", "Problem Solving"],
-    impact: "Top 3 Finish"
+    impact: "Top 3 Finish",
+    image: "/achievements-image/achievement-image 1.png"
   },
   {
     id: 2,
@@ -22,27 +24,19 @@ const achievements = [
     description: "Delivered core LMS + web features with React, Node.js, APIs, and database, boosting usability and scalability.",
     highlight: "6-month internship",
     skills: ["React", "Node.js", "Database Design", "API Development"],
-    impact: "Production Impact"
+    impact: "Production Impact",
+    image: "/achievements-image/achievement-image 2.png"
   },
   {
     id: 3,
-    title: "Quantum Project – Recursive v2",
-    category: "Development",
-    year: "2024",
-    description: "Architected and deployed a cutting-edge quantum computing simulation platform with advanced algorithms and real-time visualization capabilities.",
-    highlight: "Quantum computing",
-    skills: ["Quantum Algorithms", "Python", "Data Visualization", "Research"],
-    impact: "Innovation"
-  },
-  {
-    id: 4,
     title: "Event Coordinator – AI Zypher",
     category: "Leadership",
     year: "2023",
     description: "Led the 'Code Auction' event end-to-end: logistics, engagement, and execution – strong leadership + communication flex.",
     highlight: "Managed 100+ attendees",
     skills: ["Event Management", "Communication", "Leadership"],
-    impact: "100+ Attendees"
+    impact: "100+ Attendees",
+    image: "/achievements-image/achievement-image 3.jpg"
   }
 ];
 
@@ -67,39 +61,35 @@ export default function AchievementsSection() {
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   
   useEffect(() => {
-    const lines = [
-      "$ initializing achievement_module...",
-      "> loading credentials...",
-      "[OK] user authenticated",
-      "> scanning timeline...",
-      "[INFO] 4 achievements detected",
-      "> calculating impact score...",
-      "[OK] metrics compiled",
-      "> rendering visualization...",
-      "[SUCCESS] timeline rendered",
-      "$ awaiting next command...",
-      "",
-      "$ cat achievements.log",
-      "> 2024: Competition victory",
-      "> 2023-24: Production experience",
-      "> 2024: Quantum research",
-      "> 2023: Leadership proven",
-      "[INFO] total impact: 100+",
-      "",
-      "$ git log --oneline",
-      "a3c7f2e feat: quantum algorithms",
-      "b91e4d5 fix: lms optimization",
-      "c5d8a12 docs: event coordination",
-      "d2f9b34 feat: hackathon prototype",
-      "",
-      "$ system status",
-      "[✓] skills: up to date",
-      "[✓] projects: deployed",
-      "[✓] network: connected",
-      "",
-    ];
-    
-    let index = 0;
+        const lines = [
+          "$ initializing achievement_module...",
+          "> loading credentials...",
+          "[OK] user authenticated",
+          "> scanning timeline...",
+          "[INFO] 3 achievements detected",
+          "> calculating impact score...",
+          "[OK] metrics compiled",
+          "> rendering visualization...",
+          "[SUCCESS] timeline rendered",
+          "$ awaiting next command...",
+          "",
+          "$ cat achievements.log",
+          "> 2024: Competition victory",
+          "> 2023: Production experience",
+          "> 2023: Leadership proven",
+          "[INFO] total impact: 100+",
+          "",
+          "$ git log --oneline",
+          "a3c7f2e feat: hackathon prototype",
+          "b91e4d5 fix: lms optimization",
+          "c5d8a12 docs: event coordination",
+          "",
+          "$ system status",
+          "[✓] skills: up to date",
+          "[✓] projects: deployed",
+          "[✓] network: connected",
+          "",
+        ];    let index = 0;
     const interval = setInterval(() => {
       setTerminalLines(prev => {
         const next = [...prev, lines[index % lines.length]];
@@ -135,81 +125,99 @@ export default function AchievementsSection() {
           </motion.div>
 
           {/* Stats bar removed per user request */}
+          
+          {/* Main Grid Layout - 70/30 */}
+          <div className="grid lg:grid-cols-[70%_30%] gap-8">
+            {/* Left: Single Achievement Box */}
+            <motion.div
+              variants={itemVariants}
+              className="group"
+            >
+              <div className="relative bg-black/60 border border-gray-800/80 hover:border-purple-500/30 rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)]">
+                {/* Gradient Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          {/* Main Grid Layout */}
-          <div className="grid lg:grid-cols-[80%_20%] gap-8">
-            {/* Left: Achievements Grid (2x2) */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement.id}
-                  variants={itemVariants}
-                  className="group"
-                >
-                  <div className="relative bg-black/60 border border-gray-800/80 hover:border-purple-500/30 rounded-lg overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.15)] h-full flex flex-col">
-                    {/* Gradient Overlay on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                    {/* Content */}
-                    <div className="relative p-6 flex flex-col flex-1">
-                      {/* Header Row */}
-                      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="px-2 py-1 bg-gray-900/50 border border-gray-800 rounded text-xs text-gray-500 font-mono uppercase tracking-wider">
-                            {achievement.category}
-                          </span>
+                {/* Content */}
+                <div className="relative p-6 md:p-8">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    {/* Left: Image Column */}
+                    <div className="flex flex-col gap-6 lg:w-1/3">
+                      {achievements.map((achievement) => (
+                        <div
+                          key={achievement.id}
+                          className="relative aspect-[4/3] rounded-lg overflow-hidden border border-gray-800/60 hover:border-purple-500/30 transition-all duration-300"
+                        >
+                          <Image
+                            src={achievement.image}
+                            alt={achievement.title}
+                            fill
+                            className="object-cover"
+                          />
                         </div>
-                        <div className="px-2 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-xs text-purple-300 font-mono font-bold">
-                          {achievement.year}
-                        </div>
-                      </div>
+                      ))}
+                    </div>
 
-                      {/* Highlight */}
-                      <div className="mb-3">
-                        <span className="text-xs text-purple-400 font-mono">
-                          {achievement.highlight}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 className="text-xl md:text-2xl font-black text-white font-mono leading-tight mb-3 group-hover:text-purple-50 transition-colors duration-300">
-                        {achievement.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-gray-400 leading-relaxed text-sm mb-4 flex-1">
-                        {achievement.description}
-                      </p>
-
-                      {/* Skills Grid */}
-                      <div className="grid grid-cols-2 gap-2 mb-3">
-                        {achievement.skills.map((skill, idx) => (
-                          <div
-                            key={idx}
-                            className="px-2 py-1.5 bg-black/40 border border-gray-800/60 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 text-center"
-                          >
-                            {skill}
+                    {/* Right: Descriptions */}
+                    <div className="flex-1 space-y-8">
+                      {achievements.map((achievement, index) => (
+                        <div
+                          key={achievement.id}
+                          className={`${index !== achievements.length - 1 ? 'pb-8 border-b border-gray-800/50' : ''}`}
+                        >
+                          {/* Header */}
+                          <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="px-2 py-1 bg-gray-900/50 border border-gray-800 rounded text-xs text-white font-mono uppercase tracking-wider">
+                                {achievement.category}
+                              </span>
+                              <span className="text-xs text-purple-400 font-mono">
+                                {achievement.highlight}
+                              </span>
+                            </div>
+                            <div className="px-2 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-xs text-purple-300 font-mono font-bold">
+                              {achievement.year}
+                            </div>
                           </div>
-                        ))}
-                      </div>
 
-                      {/* Impact Badge */}
-                      <div className="flex items-center gap-2 pt-3 border-t border-gray-800/50">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                          <span className="text-xs text-gray-600 font-mono uppercase tracking-wide">Impact:</span>
+                          {/* Title */}
+                          <h3 className="text-xl md:text-2xl font-black text-white font-mono leading-tight mb-3 group-hover:text-purple-50 transition-colors duration-300">
+                            {achievement.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-gray-400 leading-relaxed text-sm mb-4">
+                            {achievement.description}
+                          </p>
+
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {achievement.skills.map((skill, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2 py-1 bg-black/40 border border-gray-800/60 rounded text-xs text-gray-500 font-mono hover:text-gray-300 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Impact Badge */}
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                              <span className="text-xs text-white font-mono uppercase tracking-wide">Impact:</span>
+                            </div>
+                            <span className="text-xs text-gray-400 font-mono font-bold">
+                              {achievement.impact}
+                            </span>
+                          </div>
                         </div>
-                        <span className="text-xs text-gray-400 font-mono font-bold">
-                          {achievement.impact}
-                        </span>
-                      </div>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-
-          {/* Right: Live Terminal */}
+                </div>
+              </div>
+            </motion.div>          {/* Right: Live Terminal */}
           <motion.div 
             variants={itemVariants}
             className="hidden lg:block sticky top-24 h-fit"
