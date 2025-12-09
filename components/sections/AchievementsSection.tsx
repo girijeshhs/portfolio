@@ -145,12 +145,13 @@ export default function AchievementsSection() {
                       {achievements.map((achievement) => (
                         <div
                           key={achievement.id}
-                          className="relative aspect-[4/3] rounded-lg overflow-hidden border border-gray-800/60 hover:border-purple-500/30 transition-all duration-300"
+                          className="relative w-full h-40 md:h-56 lg:h-64 rounded-lg overflow-hidden border border-gray-800/60 hover:border-purple-500/30 transition-all duration-300"
                         >
                           <Image
-                            src={achievement.image}
+                            src={encodeURI(achievement.image)}
                             alt={achievement.title}
                             fill
+                            sizes="(min-width:1024px) 220px, 33vw"
                             className="object-cover"
                           />
                         </div>
@@ -174,9 +175,7 @@ export default function AchievementsSection() {
                                 {achievement.highlight}
                               </span>
                             </div>
-                            <div className="px-2 py-1 bg-purple-500/10 border border-purple-500/30 rounded text-xs text-purple-300 font-mono font-bold">
-                              {achievement.year}
-                            </div>
+                            {/* year badge removed to avoid empty/floaty boxes */}
                           </div>
 
                           {/* Title */}
